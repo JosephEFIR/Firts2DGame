@@ -4,15 +4,18 @@ namespace First2DGame
 {
     public class CharacterView : MonoBehaviour
     {
+       
+        [Header("Настройки")]
+
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
-
-        [Header("Настройки")]
-        [SerializeField] private float _walkSpeed = 1f;
+        [SerializeField] private Rigidbody2D _rigidbody2d;
+        
+        [SerializeField] private float _walkSpeed = 10f;
 
         [SerializeField] private float _animationSpeed = 3f;
 
-        [SerializeField] private float _jumpSpeed = 2f;
+        [SerializeField] private float _jumpForce = 2f;
 
         [SerializeField] private float _movingTresh = 0.1f;
 
@@ -27,7 +30,7 @@ namespace First2DGame
 
         public float AnimationSpeed => _animationSpeed;
 
-        public float JumpSpeed => _jumpSpeed;
+        public float JumpForce => _jumpForce;
 
         public float MovingTresh => _movingTresh;
 
@@ -36,5 +39,7 @@ namespace First2DGame
         public float GroundLevel => _groundLevel;
 
         public float Acceleration => _acceleration;
+
+        public Rigidbody2D Rigidbody2d  => _rigidbody2d;
     }
 }

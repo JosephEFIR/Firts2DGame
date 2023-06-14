@@ -6,6 +6,6 @@ namespace First2DGame
         Idle,
         Walk,
         Jump,
-        Langing
+        Landing
     }
 }

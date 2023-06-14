@@ -14,9 +14,11 @@ namespace First2DGame
         private ParalaxManager _paralax;
         private SpriteAnimator _spriteAnimator;
         private PlayerWalker _playerWalker;
+        [SerializeField]private GroundCheck _groundCheck;
 
         private void Start()
         {
+            
             _paralax = new ParalaxManager(_camera, _background.transform);
             _spriteAnimator = new SpriteAnimator(_spriteAnimConfig);
             _playerWalker = new PlayerWalker(_characterView, _spriteAnimator);
@@ -26,13 +28,12 @@ namespace First2DGame
         {
             _paralax.Update();
             _spriteAnimator.Update();
-            _playerWalker.Update();
 
         }
 
         private void FixedUpdate()
         {
-
+            _playerWalker.FixedUpdate(_groundCheck);
         }
 
         private void OnDestroy()

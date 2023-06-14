@@ -15,8 +15,17 @@ MonoBehaviour:
   _sequences:
   - Track: 0
     Sprites:
-    - {fileID: -935350341, guid: b899119e403189d4a9a39d702a056273, type: 3}
     - {fileID: 785224, guid: b899119e403189d4a9a39d702a056273, type: 3}
+    - {fileID: 785224, guid: b899119e403189d4a9a39d702a056273, type: 3}
+    - {fileID: 785224, guid: b899119e403189d4a9a39d702a056273, type: 3}
+    - {fileID: 785224, guid: b899119e403189d4a9a39d702a056273, type: 3}
+    - {fileID: 785224, guid: b899119e403189d4a9a39d702a056273, type: 3}
+    - {fileID: 785224, guid: b899119e403189d4a9a39d702a056273, type: 3}
+    - {fileID: 785224, guid: b899119e403189d4a9a39d702a056273, type: 3}
+    - {fileID: 785224, guid: b899119e403189d4a9a39d702a056273, type: 3}
+    - {fileID: 785224, guid: b899119e403189d4a9a39d702a056273, type: 3}
+    - {fileID: 785224, guid: b899119e403189d4a9a39d702a056273, type: 3}
+    - {fileID: -935350341, guid: b899119e403189d4a9a39d702a056273, type: 3}
   - Track: 1
     Sprites:
     - {fileID: 888899018, guid: f9a4f91b552707c46865fce16bebebb5, type: 3}
