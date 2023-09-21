@@ -2,15 +2,18 @@ using UnityEngine;
 
 namespace First2DGame
 {
-    public class CharacterView : MonoBehaviour
+    public class PlayerView : MonoBehaviour
     {
-       
-        [Header("���������")]
+        [SerializeField] private GroundCheck _groundCheck;
 
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
         [SerializeField] private Rigidbody2D _rigidbody2d;
-        
+
+        [SerializeField] private Transform _playerPos;
+
+        [Header("Настройка физики и анимации")]
+
         [SerializeField] private float _walkSpeed = 10f;
 
         [SerializeField] private float _animationSpeed = 3f;
@@ -19,12 +22,12 @@ namespace First2DGame
 
         [SerializeField] private float _movingTresh = 0.1f;
 
-        [SerializeField] private float _flyTresh = 0.4f;
+        [Header("Настройки персонажа")]
 
-        [SerializeField] private float _groundLevel = 0.5f;
+        [SerializeField] private int _health = 3;
 
-        [SerializeField] private float _acceleration = -10f;
-
+        [SerializeField] private int _damage = 1;
+        
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public float WalkSpeed => _walkSpeed;
 
@@ -34,12 +37,14 @@ namespace First2DGame
 
         public float MovingTresh => _movingTresh;
 
-        public float FlyTresh => _flyTresh;
+        public Rigidbody2D Rigidbody2d => _rigidbody2d;
 
-        public float GroundLevel => _groundLevel;
+        public int Health { get => _health; set => _health = value; }
 
-        public float Acceleration => _acceleration;
+        public int Damage => _damage;
 
-        public Rigidbody2D Rigidbody2d  => _rigidbody2d;
+        public Transform PlayerPos => _playerPos;
+
+        public GroundCheck GroundCheck => _groundCheck;
     }
 }

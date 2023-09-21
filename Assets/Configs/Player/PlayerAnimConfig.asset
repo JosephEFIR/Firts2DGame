@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d89268e8730b844a8f64b9adc9f9e37, type: 3}
-  m_Name: SpriteAnimConfig
+  m_Name: PlayerAnimConfig
   m_EditorClassIdentifier: 
   _sequences:
   - Track: 0

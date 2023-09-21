@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d89268e8730b844a8f64b9adc9f9e37, type: 3}
+  m_Name: ScorpionConfig
+  m_EditorClassIdentifier: 
+  _sequences:
+  - Track: 0
+    Sprites:
+    - {fileID: 21300000, guid: bcc613e13143f274ab84203363f5978a, type: 3}
+  - Track: 1
+    Sprites:
+    - {fileID: 1180157621, guid: e709ba89232ef1e419e81dc20cff443e, type: 3}
+    - {fileID: -238857324, guid: e709ba89232ef1e419e81dc20cff443e, type: 3}
+    - {fileID: -703573394, guid: e709ba89232ef1e419e81dc20cff443e, type: 3}
+    - {fileID: -1716583326, guid: e709ba89232ef1e419e81dc20cff443e, type: 3}
+  - Track: 4
+    Sprites:
+    - {fileID: -501268600, guid: 634e73920fcf94c46a4a63e9399cd1aa, type: 3}
+    - {fileID: -1777653980, guid: 634e73920fcf94c46a4a63e9399cd1aa, type: 3}
+    - {fileID: -1079641245, guid: 634e73920fcf94c46a4a63e9399cd1aa, type: 3}
+    - {fileID: -2145661402, guid: 634e73920fcf94c46a4a63e9399cd1aa, type: 3}
+    - {fileID: 1555095951, guid: 634e73920fcf94c46a4a63e9399cd1aa, type: 3}
+    - {fileID: -365014890, guid: 634e73920fcf94c46a4a63e9399cd1aa, type: 3}
+    - {fileID: -1100327329, guid: 634e73920fcf94c46a4a63e9399cd1aa, type: 3}
+    - {fileID: -1080113642, guid: 634e73920fcf94c46a4a63e9399cd1aa, type: 3}
+    - {fileID: -1283170034, guid: 634e73920fcf94c46a4a63e9399cd1aa, type: 3}
+    - {fileID: -1077156112, guid: 634e73920fcf94c46a4a63e9399cd1aa, type: 3}

@@ -4,7 +4,7 @@ namespace First2DGame
 {
     public class ParalaxManager : MonoBehaviour
     {
-        private const float Coef = 0.5F;
+        private const float Coef = 0.9F;
 
         private Camera _camera;
         private Transform _backgroundTransform;

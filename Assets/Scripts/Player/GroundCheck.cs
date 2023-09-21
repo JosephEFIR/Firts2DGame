@@ -1,24 +1,24 @@
 using UnityEngine;
 
-namespace First2DGame
+
+public class GroundCheck : MonoBehaviour
 {
-    public class GroundCheck : MonoBehaviour
+    private bool _isGround;
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        private bool _isGround;
 
-        public bool IsGround  => _isGround;
-
-        private void OnTriggerEnter2D(Collider2D collision)
+        if (collision.gameObject.tag == "Ground")
         {
-            if (collision.CompareTag("Ground"))
-            {
-                _isGround = true;
-            }
-
+            _isGround = true;
         }
-        private void OnTriggerExit2D(Collider2D collision)
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
         {
             _isGround = false;
         }
     }
+    public bool IsGround => _isGround;
 }

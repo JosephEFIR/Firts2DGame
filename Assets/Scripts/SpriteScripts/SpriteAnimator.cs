@@ -1,9 +1,8 @@
-using First2DGame;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace First2DGame
+namespace First2DGame 
 {
     public class SpriteAnimator : IDisposable
     {

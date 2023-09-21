@@ -1,11 +1,8 @@
-
-namespace First2DGame
+public enum Track
 {
-    public enum Track
-    {
-        Idle,
-        Walk,
-        Jump,
-        Landing
-    }
+    Idle,
+    Walk,
+    Jump,
+    Landing,
+    Attack
 }
