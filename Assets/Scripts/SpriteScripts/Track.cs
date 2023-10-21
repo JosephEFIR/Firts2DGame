@@ -2,7 +2,9 @@ public enum Track
 {
     Idle,
     Walk,
+    Run,
     Jump,
     Landing,
-    Attack
+    Attack,
+    Death
 }

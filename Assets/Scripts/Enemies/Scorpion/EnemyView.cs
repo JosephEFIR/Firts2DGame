@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace First2DGame
 {
@@ -37,6 +36,7 @@ namespace First2DGame
 
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public Rigidbody2D RigidBody2d => _rigidBody2d;
+            
         public float AnimationSpeed => _animationSpeed;
         public float AttackDistance => _attackDistance;
         public float VisibleDistance => _visibleDistance;

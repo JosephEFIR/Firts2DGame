@@ -1,0 +1,602 @@
+fileFormatVersion: 2
+guid: 4a2bbfb90bc724c4db680fddfe1c0a83
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Enviroments_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 68
+        width: 160
+        height: 136
+      alignment: 9
+      pivot: {x: 0.49370342, y: -0.08542274}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb857460b33b01459728adc6bb65661
+      internalID: -1745353206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_1
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 176
+        width: 58
+        height: 28
+      alignment: 9
+      pivot: {x: 0.4969985, y: 0.605684}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4d3103f26dbbad408c95d649e680dea
+      internalID: -1055399673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_2
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 176
+        width: 57
+        height: 28
+      alignment: 9
+      pivot: {x: 0.4969461, y: 0.5994677}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe9eeb5c48f79b14b9bae1e85256b160
+      internalID: 394554181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_3
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 142
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30ba42542d8a5fd438e09f25024c1d56
+      internalID: -705163926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_4
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 142
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc07fa952e597b7499cb68e3641ad857
+      internalID: 1995673942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_5
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 142
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a346f885e04aa43942d2316e11df8b
+      internalID: 1857625543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_6
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 108
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1356a4403628c0f4faf154aeac5e8ac9
+      internalID: -1247907873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_7
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 110
+        width: 24
+        height: 30
+      alignment: 9
+      pivot: {x: 0.51190567, y: 0.4527275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc63da286a27b5e40b7db0856e4f9298
+      internalID: -1357478789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_8
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 74
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9bca99b32401ea48a91c036443c455a
+      internalID: 594330837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_9
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 74
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.50161314, y: 0.99422026}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0564da782355a394db10bf295976d25f
+      internalID: 1765719886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_10
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 2
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a2e6a348e88be8408937eb4725ad42e
+      internalID: -1037755862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_11
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 30
+        width: 26
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5000003, y: 0.60499954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db03815f94633c04cb02ae5b4d2e2b69
+      internalID: 1337422696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_12
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 30
+        width: 26
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5073694, y: 0.6129727}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7e64fb0c23050d479cac9a8a9ab27d7
+      internalID: 1775973498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_13
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 30
+        width: 25
+        height: 26
+      alignment: 9
+      pivot: {x: 0.4928607, y: 0.6045312}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bf62ceb04cf65d4dbcb4ffc3e7edddf
+      internalID: 661098857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_14
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 30
+        width: 26
+        height: 26
+      alignment: 9
+      pivot: {x: 0.49290115, y: 0.6116305}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b97f8db1cd0d54a9bcffe15fce3119
+      internalID: -444762133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_15
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 30
+        width: 26
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5000006, y: 0.5974319}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cbeed3d6a7e6a04cba35f840c19f40a
+      internalID: -430136963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_16
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 2
+        width: 26
+        height: 26
+      alignment: 9
+      pivot: {x: 0.50437343, y: 0.60480666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cd876fbfc03499438444154a108184a
+      internalID: 1029528816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_17
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 2
+        width: 26
+        height: 26
+      alignment: 9
+      pivot: {x: 0.4956272, y: 0.6091798}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a766b3785c5fb14c80c107517c17bb6
+      internalID: 254283106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_18
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 2
+        width: 25
+        height: 26
+      alignment: 9
+      pivot: {x: 0.496922, y: 0.6120047}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b2538702d4c0942ae16b7efc2dc22f
+      internalID: 777476501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_19
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 2
+        width: 26
+        height: 26
+      alignment: 9
+      pivot: {x: 0.48842973, y: 0.6091798}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 454aaf886300a6e47843145da109cb17
+      internalID: 1485797747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enviroments_20
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 2
+        width: 26
+        height: 26
+      alignment: 9
+      pivot: {x: 0.50437397, y: 0.6208859}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82a56cfcaa52ac04cbb09ff8f60e4071
+      internalID: 1789782689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Enviroments_0: -1745353206
+      Enviroments_1: -1055399673
+      Enviroments_10: -1037755862
+      Enviroments_11: 1337422696
+      Enviroments_12: 1775973498
+      Enviroments_13: 661098857
+      Enviroments_14: -444762133
+      Enviroments_15: -430136963
+      Enviroments_16: 1029528816
+      Enviroments_17: 254283106
+      Enviroments_18: 777476501
+      Enviroments_19: 1485797747
+      Enviroments_2: 394554181
+      Enviroments_20: 1789782689
+      Enviroments_3: -705163926
+      Enviroments_4: 1995673942
+      Enviroments_5: 1857625543
+      Enviroments_6: -1247907873
+      Enviroments_7: -1357478789
+      Enviroments_8: 594330837
+      Enviroments_9: 1765719886
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

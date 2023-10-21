@@ -1,9 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace First2DGame
 {
     public class MainScript : MonoBehaviour
     {
+        [Header("Test")] 
+        [SerializeField] private List<EnemyView> _enemyList;
+        
         [SerializeField] private Camera _camera;
         [SerializeField] private SpriteRenderer _background;
         [SerializeField] private PlayerView _playerView;
@@ -18,27 +22,26 @@ namespace First2DGame
         private SpriteAnimator _spriteAnimatorPlayer;
         private SpriteAnimator _spriteAnimatorEnemy;
         private PlayerWalker _playerWalker;
-        private EnemyAI _enemyAI;
+        private EnemyController _enemyController;
         
         private EventManager _eventManager;
         private PlayerManager _playerManager;
         
-        private HealthControl _healthControl;
-        
+        private HealthUIControl _healthControl;
+
         private void Awake()
         {
             _paralax = new ParalaxManager(_camera, _background.transform);
             _spriteAnimatorPlayer = new SpriteAnimator(_playerSpriteAnimConfig);
             _playerWalker = new PlayerWalker(_playerView, _spriteAnimatorPlayer);
             _spriteAnimatorEnemy = new SpriteAnimator(_enemySpriteAnimConfig);
-            _enemyAI = new EnemyAI(_enemyView, _spriteAnimatorEnemy, _playerView);
-
+            _enemyController = new EnemyController(_enemyView, _spriteAnimatorEnemy, _playerView);
+            
             _eventManager = new EventManager();
             _playerManager = new PlayerManager(_playerView, _eventManager);
-            _healthControl = new HealthControl(_healthUIView);
+            _healthControl = new HealthUIControl(_healthUIView);
         }
-
-
+        
         private void Update()
         {
             _paralax.Update();
@@ -49,7 +52,7 @@ namespace First2DGame
         private void FixedUpdate()
         {
             _playerWalker.FixedUpdate();
-            _enemyAI.FixedUpdate();
+            _enemyController.FixedUpdate();
             _playerManager.FixedUpdate();
         } 
     }

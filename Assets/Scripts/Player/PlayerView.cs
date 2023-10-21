@@ -10,8 +10,6 @@ namespace First2DGame
 
         [SerializeField] private Rigidbody2D _rigidbody2d;
 
-        [SerializeField] private Transform _playerPos;
-
         [Header("Настройка физики и анимации")]
 
         [SerializeField] private float _walkSpeed = 10f;
@@ -42,9 +40,6 @@ namespace First2DGame
         public int Health { get => _health; set => _health = value; }
 
         public int Damage => _damage;
-
-        public Transform PlayerPos => _playerPos;
-
         public GroundCheck GroundCheck => _groundCheck;
     }
 }
