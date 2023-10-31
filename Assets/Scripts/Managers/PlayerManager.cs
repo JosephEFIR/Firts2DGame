@@ -22,7 +22,7 @@ namespace First2DGame
                 PlayerTakeDamage();
                 _currentPlayerHealth = _playerView.Health;
             }
-            else if(_playerView.Health <= 0)
+            else if(_currentPlayerHealth <= 0)
             {
                 RestartGame();
             }

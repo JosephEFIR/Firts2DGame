@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using Unity.VisualScripting;
 
 namespace First2DGame
 {
     public class DeathZone : MonoBehaviour
     { 
         [SerializeField]private PlayerView _playerView;
+
         private void OnTriggerEnter2D(Collider2D collider2D)
         {
             if (collider2D.gameObject.tag == "Player")
@@ -13,7 +15,6 @@ namespace First2DGame
                 StartCoroutine(TakeDamageWithTimer());
             }
         }
-
         private void OnTriggerExit2D(Collider2D collider2D)
         {
             if (collider2D.gameObject.tag == "Player")
@@ -24,7 +25,7 @@ namespace First2DGame
 
         private IEnumerator TakeDamageWithTimer()
         {
-            if(_playerView.Health != 0)
+            while(_playerView.Health != 0)
             {
                 _playerView.Health -= 1;  
                 yield return new WaitForSeconds(1F);

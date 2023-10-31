@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d89268e8730b844a8f64b9adc9f9e37, type: 3}
+  m_Name: MonkeyConfig
+  m_EditorClassIdentifier: 
+  _sequences:
+  - Track: 0
+    Sprites:
+    - {fileID: -1488068358, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
+    - {fileID: -1336710315, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
+  - Track: 1
+    Sprites:
+    - {fileID: 2010882049, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
+    - {fileID: 1027983345, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
+    - {fileID: 452707973, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
+  - Track: 5
+    Sprites:
+    - {fileID: 1711832301, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
+    - {fileID: 1102068437, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
+    - {fileID: 1302260878, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
+    - {fileID: 140479688, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}

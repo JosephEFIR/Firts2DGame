@@ -1,8 +1,9 @@
 using System.Linq;
+using UnityEngine;
 
 namespace First2DGame
 {
-    public class HealthUIControl
+    public class HealthUIControl : MonoBehaviour
     {
         private HealthUIView _healthUIView;
 
@@ -15,7 +16,7 @@ namespace First2DGame
         private void TakeDamage()
         {
             var lastHeart = _healthUIView.Hearts.Last();
-            lastHeart.gameObject.SetActive(false);
+            Destroy(lastHeart);
             _healthUIView.Hearts.Remove(lastHeart);
         }
     }
