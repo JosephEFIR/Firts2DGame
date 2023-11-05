@@ -18200,7 +18200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _background: {fileID: 202366114}
-  _playerCamera: {fileID: 0}
+  _playerCamera: {fileID: 1373888899}
   _sunLight2D: {fileID: 1567233171}
 --- !u!19719996 &1106471966
 TilemapCollider2D:
