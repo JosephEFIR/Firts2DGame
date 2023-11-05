@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
-using Unity.VisualScripting;
 
 namespace First2DGame
 {
     public class DeathZone : MonoBehaviour
-    { 
-        [SerializeField]private PlayerView _playerView;
+    {
+        private PlayerView _playerView;
+        private void Awake()
+        {
+            _playerView = FindObjectOfType<PlayerView>();
+        }
 
         private void OnTriggerEnter2D(Collider2D collider2D)
         {

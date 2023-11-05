@@ -7,8 +7,7 @@ namespace First2DGame
     {
         private EnemyView _enemyView;
         private SpriteAnimator _spriteAnimator;
-        private PlayerView _playerView
-            ;
+        private PlayerView _playerView;
 
         private float _distanceToTarget;
         private bool _isAttack = true;
@@ -26,7 +25,7 @@ namespace First2DGame
         
         public void FixedUpdate()
         {
-            if (_enemyView.GroundCheck.IsGround == true)
+            if (_enemyView.GroundCheck.IsGround)
             {
                 CheckDistanceToTarget();
                 if (_distanceToTarget <= _enemyView.AttackDistance  )

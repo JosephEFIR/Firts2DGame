@@ -14,35 +14,40 @@ namespace First2DGame
         {
             _playerView = playerView;
             _spriteAnimator = spriteAnimator;
+            _playerView.StopWalk = false;
         }
         public void FixedUpdate()
         {
-            _horizontalAxis = Input.GetAxis("Horizontal");
-            if (_playerView.GroundCheck.IsGround)
+            if (_playerView.StopWalk == false)
             {
-                if (Input.GetKey(KeyCode.Space))
+                _horizontalAxis = Input.GetAxis("Horizontal");
+                if (_playerView.GroundCheck.IsGround)
                 {
-                    Run();
+                    if (Input.GetKey(KeyCode.Space))
+                    {
+                        Run();
+                    }
+                    else
+                    {
+                        Move();
+                        Jump();
+                    }
                 }
-                else
+                else if (_playerView.GroundCheck.IsGround == false)
                 {
-                    Move();
-                    Jump();
+                    if (Input.GetKey(KeyCode.Space))
+                    {
+                        Run();
+                    }
+                    else
+                    {
+                        Move();
+                        _spriteAnimator.StartAnimation(_playerView.SpriteRenderer, Track.Landing, true, _playerView.AnimationSpeed); 
+                    }
                 }
+                Flip();
             }
-            else if (_playerView.GroundCheck.IsGround == false)
-            {
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    Run();
-                }
-                else
-                {
-                    Move();
-                    _spriteAnimator.StartAnimation(_playerView.SpriteRenderer, Track.Landing, true, _playerView.AnimationSpeed); 
-                }
-            }
-            Flip();
+            
         }
         private void Move()
         {

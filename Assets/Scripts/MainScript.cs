@@ -6,7 +6,7 @@ namespace First2DGame
     public class MainScript : MonoBehaviour
     {
         [Header("Test")] 
-        [SerializeField] private List<EnemyView> _enemyList; // Enemy View
+        [SerializeField] private List<EnemyView> _enemyList; 
         
         [SerializeField] private Camera _camera;
         [SerializeField] private SpriteRenderer _background;
@@ -27,12 +27,13 @@ namespace First2DGame
         private EventManager _eventManager;
         private PlayerManager _playerManager;
         
-        private HealthUIControl _healthUIControl;
+        private HealthUIController _healthUIController;
         private Reference _reference;
-        private Canvas _canvas;
 
         private void Awake()
         {
+            Time.timeScale = 1;
+            
             _paralax = new ParalaxManager(_camera, _background.transform);
             _spriteAnimatorPlayer = new SpriteAnimator(_playerSpriteAnimConfig);
             _playerWalker = new PlayerWalker(_playerView, _spriteAnimatorPlayer);
@@ -40,13 +41,13 @@ namespace First2DGame
             _enemyController = new EnemyController(_enemyView, _spriteAnimatorEnemy, _playerView);
             
             _eventManager = new EventManager();
-            _playerManager = new PlayerManager(_playerView, _eventManager);
+            _playerManager = new PlayerManager(_playerView, _eventManager, _spriteAnimatorPlayer);
             
             _reference = new Reference();
             _healthUIView.Hearts.Add(_reference.Heart);
             _healthUIView.Hearts.Add(_reference.Heart);
             _healthUIView.Hearts.Add(_reference.Heart);
-            _healthUIControl = new HealthUIControl(_healthUIView);
+            _healthUIController = new HealthUIController(_healthUIView);
         }
 
         private void Update()

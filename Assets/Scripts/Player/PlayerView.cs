@@ -41,5 +41,7 @@ namespace First2DGame
 
         public int Damage => _damage;
         public GroundCheck GroundCheck => _groundCheck;
+
+        public bool StopWalk{ get; set; }
     }
 }

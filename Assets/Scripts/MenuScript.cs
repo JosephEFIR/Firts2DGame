@@ -5,10 +5,17 @@ namespace First2DGame
 {
     public class MenuScript : MonoBehaviour
     {
-        public void LoadFirstLVL()
+        private FirstMapLoadder _firstMapLoadder;
+
+        private void UnloadMenu()
         {
-            SceneManager.LoadScene(1);
             SceneManager.UnloadScene(0);
+        }
+            
+        public void LoadFirstMap()
+        {
+            _firstMapLoadder.LoadMap();
+            UnloadMenu();
         }
     }
 }
