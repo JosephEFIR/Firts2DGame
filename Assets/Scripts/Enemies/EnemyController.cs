@@ -80,7 +80,6 @@ namespace Scripts.Enemies
             }
             if (_groundCheck.IsGround & _jumpTrigger.CanJump)
             {
-                Debug.Log(_jumpTrigger.CanJump + " aaa?");
                 Jump();
             }
         }
