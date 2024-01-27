@@ -1,15 +1,13 @@
 using System.Collections;
+using Scripts.Managers;
 using UnityEngine;
+using Zenject;
 
-namespace First2DGame
+namespace Scripts.TriggerScripts
 {
     public class DeathZone : MonoBehaviour
     {
-        private PlayerView _playerView;
-        private void Awake()
-        {
-            _playerView = FindObjectOfType<PlayerView>();
-        }
+        [Inject] private HealthSystem _playerHealthSystem;
 
         private void OnTriggerEnter2D(Collider2D collider2D)
         {
@@ -28,11 +26,8 @@ namespace First2DGame
 
         private IEnumerator TakeDamageWithTimer()
         {
-            while(_playerView.Health != 0)
-            {
-                _playerView.Health -= 1;  
-                yield return new WaitForSeconds(1F);
-            }
+            _playerHealthSystem.TakeDamage(1);
+            yield return new WaitForSeconds(1F);
         }
     }
 }

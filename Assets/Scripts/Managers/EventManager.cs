@@ -1,21 +1,27 @@
 using System;
-using System.Collections;
 
-namespace First2DGame
+namespace Scripts.Managers
 {
-    public class EventManager 
+    public class EventManager
     {
-        public static Action _onTakeDamageUI;
-        public static Action _onPlayerDeath;
-        
-        public void TakeDamageUI()
+        public static Action<int> _onTakeDamageUI;
+        public static Action _onDeathUI;
+        public static Action<int> _onAddHealthUI;
+
+        public void TakeDamageUI(int value)
         {
-            if (_onTakeDamageUI != null) { _onTakeDamageUI.Invoke();}
+            if (_onTakeDamageUI != null) { _onTakeDamageUI.Invoke(value);}
+        }
+        
+        public void DeathUI()
+        {
+            if(_onDeathUI != null) {_onDeathUI.Invoke();}
         }
 
-        public void PlayerDeath()
+        public void AddHealthUI(int value)
         {
-            if(_onPlayerDeath != null) {_onPlayerDeath.Invoke();}
+            if(_onAddHealthUI != null) {_onAddHealthUI.Invoke(value);}
         }
+        
     }
 }

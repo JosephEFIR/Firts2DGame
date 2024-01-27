@@ -7,6 +7,11 @@ namespace First2DGame
     {
         private FirstMapLoadder _firstMapLoadder;
 
+        private void Awake()
+        {
+            _firstMapLoadder = new FirstMapLoadder();
+        }
+
         private void UnloadMenu()
         {
             SceneManager.UnloadScene(0);

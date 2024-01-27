@@ -1,37 +1,33 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
-namespace First2DGame
+namespace Scripts.TriggerScripts
 {
+    [RequireComponent(typeof(AudioSource))]
     public sealed class CaveZone : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer _background;
         [SerializeField] private Camera _playerCamera;
-        [SerializeField] private Light2D _sunLight2D;
-        private float _alphaChannel;
-
-        private void Awake()
-        {
-            _alphaChannel = _background.color.a;
-        }
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioSource _ForestAudioSource;
         private void OnTriggerEnter2D(Collider2D collider2D)
         {
             if (collider2D.gameObject.tag == "Player")
             {
-                if (_alphaChannel == 1 & _playerCamera.orthographicSize == 8 & _sunLight2D.intensity == 1)
+                _audioSource.DOFade(1F, 3);
+                _ForestAudioSource.DOFade(0F, 3);
+                _audioSource.Play();
+                //PLEASE REFACTOR THIS !! I AM SCARED!
+                
+                if (_playerCamera.orthographicSize == 8)
                 {
-                    StartCoroutine(DowngradeAlphaChannel());
                     StartCoroutine(CameraZoom());
-                    StartCoroutine(DowngradeBrightnessLight());
                 }
                 else
                 {
-                    StopAllCoroutines();
-                    // Дубляж что бы не было меньше багов
-                    StartCoroutine(DowngradeAlphaChannel());
+                    StopCoroutine(CameraUnZoom());
+                    
                     StartCoroutine(CameraZoom());
-                    StartCoroutine(DowngradeBrightnessLight());
                 }
             }
         }
@@ -39,62 +35,30 @@ namespace First2DGame
         {
             if (collider2D.gameObject.tag == "Player" )
             {
-                if (_alphaChannel == 0 & _playerCamera.orthographicSize == 5 & _sunLight2D.intensity == 0.1F) 
+                _audioSource.DOFade(0F, 5);
+                _ForestAudioSource.DOFade(1F, 5);
+                
+                if (_playerCamera.orthographicSize == 4) 
                 {
-                    StartCoroutine(IncreaseAlphaChannel());
                     StartCoroutine(CameraUnZoom());
-                    StartCoroutine(IncreaseBrightnessLight());
                 }
                 else
                 {
-                    StopAllCoroutines();
+                    StopCoroutine(CameraZoom());
                     
-                    StartCoroutine(IncreaseAlphaChannel());
                     StartCoroutine(CameraUnZoom());
-                    StartCoroutine(IncreaseBrightnessLight());
-                    
                 }
             }
         }
-
-        #region AlphaChannelRoutines
-        private IEnumerator DowngradeAlphaChannel()
-        {
-            while (_alphaChannel != 0 )
-            {
-                _alphaChannel -= 0.5F;
-                if (_alphaChannel < 0)
-                {
-                    _alphaChannel = 0;
-                }
-                _background.color = new Color(1, 1, 1, _alphaChannel);
-                yield return new WaitForSeconds(0.1F);
-            }
-        }
-        private IEnumerator IncreaseAlphaChannel()
-        {
-            while (_alphaChannel < 1)
-            {
-                _alphaChannel += 0.5F;
-                if (_alphaChannel > 1)
-                {
-                    _alphaChannel = 1;
-                }
-                _background.color = new Color(1, 1, 1, _alphaChannel);
-                yield return new WaitForSeconds(0.1F);
-            }
-        }
-        #endregion
-
         #region CameraRoutines
         private IEnumerator CameraZoom()
         {
-            while (_playerCamera.orthographicSize <= 8 & _playerCamera.orthographicSize != 5)
+            while (_playerCamera.orthographicSize <= 8 & _playerCamera.orthographicSize != 4)
             {
                 _playerCamera.orthographicSize -= 0.1F;
-                if (_playerCamera.orthographicSize < 5)
+                if (_playerCamera.orthographicSize < 4)
                 {
-                    _playerCamera.orthographicSize = 5;
+                    _playerCamera.orthographicSize = 4;
                 }
                 yield return new WaitForSeconds(0.005F);
             }
@@ -110,34 +74,6 @@ namespace First2DGame
                     _playerCamera.orthographicSize = 8;
                 }
                 yield return new WaitForSeconds(0.005F);
-            }
-        }
-        #endregion
-
-        #region LightRoutines
-        private IEnumerator DowngradeBrightnessLight()
-        {
-            while (_sunLight2D.intensity <= 1 & _sunLight2D.intensity  != 0.1F)
-            {
-                _sunLight2D.intensity  -= 0.1F;
-                if (_sunLight2D.intensity  <= 0.1F)
-                {
-                    _sunLight2D.intensity  = 0.1F;
-                }
-                yield return new WaitForSeconds(0.05F);
-            }
-        }
-
-        private IEnumerator IncreaseBrightnessLight()
-        {
-            while (_sunLight2D.intensity  != 1)
-            {
-                _sunLight2D.intensity  += 0.1F;
-                if (_sunLight2D.intensity  >= 1)
-                {
-                    _sunLight2D.intensity  = 1;
-                }
-                yield return new WaitForSeconds(0.05F);
             }
         }
         #endregion

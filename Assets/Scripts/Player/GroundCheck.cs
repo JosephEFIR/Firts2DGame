@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace First2DGame
+namespace Scripts.Player
 {
     public class GroundCheck : MonoBehaviour
     {

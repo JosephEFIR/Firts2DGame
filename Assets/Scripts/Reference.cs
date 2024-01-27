@@ -5,13 +5,13 @@ using System.Net.NetworkInformation;
 using Unity.VisualScripting;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using Scripts.UI;
 
-namespace First2DGame
-{
+
     public class Reference : MonoBehaviour
     {
         private Canvas _canvas;
-        private HealthUIView _healthUIView;
+        private HealthUI _healthUI;
         private GameObject _heart;
         private GameObject _restartButton;
 
@@ -25,17 +25,17 @@ namespace First2DGame
             set => _canvas = value;
         }
         
-        public HealthUIView HealthUI 
+        public HealthUI HealthUI 
         {
             get
             {
-                if(_healthUIView == null)
+                if(_healthUI == null)
                 {
-                    _healthUIView = FindObjectOfType<HealthUIView>();
+                    _healthUI = FindObjectOfType<HealthUI>();
                 }
-                return _healthUIView;
+                return _healthUI;
             }
-            set => _healthUIView = value;
+            set => _healthUI = value;
         }
 
         public GameObject Heart
@@ -49,7 +49,7 @@ namespace First2DGame
                 }
                 else if (_heart != null)
                 {
-                    GameObject lastHeart = _healthUIView.Hearts.Last();
+                    GameObject lastHeart = _healthUI.Hearts.Last();
                     
                     GameObject heartPrefab = Resources.Load<GameObject>("UI/Heart");
                     _heart = Instantiate(heartPrefab, HealthUI.transform);
@@ -75,4 +75,3 @@ namespace First2DGame
             set => _restartButton = value;
         }
     }
-}

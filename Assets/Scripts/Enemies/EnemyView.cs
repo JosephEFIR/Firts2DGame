@@ -1,6 +1,7 @@
 using UnityEngine;
+using Scripts.Player;
 
-namespace First2DGame
+namespace Scripts.Enemies
 {
     public class EnemyView : MonoBehaviour
     {

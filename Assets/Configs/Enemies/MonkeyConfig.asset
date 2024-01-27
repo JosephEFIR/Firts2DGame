@@ -9,22 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d89268e8730b844a8f64b9adc9f9e37, type: 3}
+  m_Script: {fileID: 11500000, guid: c3f3cb8dea2afa24abece387fa3f3488, type: 3}
   m_Name: MonkeyConfig
   m_EditorClassIdentifier: 
-  _sequences:
-  - Track: 0
-    Sprites:
-    - {fileID: -1488068358, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
-    - {fileID: -1336710315, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
-  - Track: 1
-    Sprites:
-    - {fileID: 2010882049, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
-    - {fileID: 1027983345, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
-    - {fileID: 452707973, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
-  - Track: 5
-    Sprites:
-    - {fileID: 1711832301, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
-    - {fileID: 1102068437, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
-    - {fileID: 1302260878, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
-    - {fileID: 140479688, guid: 6e6912199c60cb84ab7d89c126398a30, type: 3}
+  _healh: 3
+  _damage: 1
+  _jumpForce: 5
+  _speed: 4
+  _cooldown: 1
+  _attackDistance: 2
+  _visibleDistance: 15
+  _maxDistancePursuit: 20
