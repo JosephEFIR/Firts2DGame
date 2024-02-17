@@ -9,7 +9,7 @@ namespace Scripts.Configs
         
         [Header("Настройки персонажа")] 
         
-        [SerializeField] private int _healh;
+        [SerializeField] private int _healh; 
         [SerializeField] private int _damage;
         [SerializeField] private int _jumpForce;
         [SerializeField] private float _speed;

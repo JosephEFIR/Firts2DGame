@@ -9,10 +9,12 @@ using Zenject;
 
 namespace Scripts.Enemies
 {
+    [RequireComponent(typeof(Rigidbody2D), typeof(CustomAnimator))]
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private GroundCheck _groundCheck;
         [SerializeField] private EnemyConfig _enemyConfig;
+        [Space]
         [SerializeField] private JumpTrigger _jumpTrigger;
 
         [Inject] private HealthSystem _playerHealthSystem;
@@ -35,8 +37,6 @@ namespace Scripts.Enemies
         
         //Maybe create statContainer for stats?
         
-        private float _horizontalAxis;
-        private float _verticalAxis;
         private bool _isFacingRight = true;
 
         private void Awake()
@@ -82,19 +82,20 @@ namespace Scripts.Enemies
             {
                 Jump();
             }
+            FlipX();
         }
 
         private void Walk()
         {
             if (_player.transform.position.x < gameObject.transform.position.x)
             {
-                _rigidbody2D.velocity = new Vector2(- _speed, 0); 
-                _spriteRenderer.flipX = true;
+                _rigidbody2D.velocity = new Vector2(- _speed, 0);
+                _isFacingRight = true;
             }
             else if (_player.transform.position.x > gameObject.transform.position.x)
             {
                 _rigidbody2D.velocity = new Vector2(_speed, 0);
-                _spriteRenderer.flipX = false;
+                _isFacingRight = false;
             }
         }
 
@@ -102,6 +103,7 @@ namespace Scripts.Enemies
         {
             _rigidbody2D.AddForce(Vector2.up * _enemyConfig.JumpForce  ,ForceMode2D.Impulse);
         }
+        
         private void Attack()
         {
             if (_isAttack)
@@ -112,7 +114,6 @@ namespace Scripts.Enemies
                 if (_cooldown <= 0)
                 {
                     _isAttack = false;
-                    _playerHealthSystem.TakeDamage(_damage);
                 }
             }
             else if (_isAttack == false)
@@ -122,9 +123,30 @@ namespace Scripts.Enemies
             }
         }
 
+        private void OnAttack()
+        {
+            _playerHealthSystem.TakeDamage(_damage);
+        }
+
         public void GetDamage(int value)
         {
             _heatlh -= value;
+        }
+        
+        private void FlipX()
+        {
+            if (_isFacingRight)
+            {
+                Vector3 localScale = transform.localScale;
+                localScale.x = -1f;
+                transform.localScale = localScale;
+            }
+            else
+            {
+                Vector3 localScale = transform.localScale;
+                localScale.x = 1f;
+                transform.localScale = localScale;
+            }
         }
     }
 }

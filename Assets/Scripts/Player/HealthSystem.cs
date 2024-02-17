@@ -8,16 +8,15 @@ namespace Scripts.Managers
 {
     public class HealthSystem : MonoBehaviour
     { 
-        [Inject]private EventManager _eventManager;
+        [Inject] private EventManager _eventManager;
         [Inject] private PlayerConfig _playerConfig;
 
         private Animator _animator;
         private PlayerController _playerController;
         private CapsuleCollider2D _colliderSize;
 
-        private int _health;
-
-        public bool IsDead { get; private set; }
+        public int CurrentHealth {get; private set; }
+        public bool IsDead {get; private set; }
         
         private void Awake()
         {
@@ -34,24 +33,25 @@ namespace Scripts.Managers
 
         public void AddHealth(int value)
         {
-            _health += value;
-            _health = Math.Clamp(_health, 1 , _playerConfig.MaxHealth);
+            CurrentHealth += value;
+            CurrentHealth = Math.Clamp(CurrentHealth, 1 , _playerConfig.MaxHealth);
 
-            _eventManager.AddHealthUI(_health);
+            _eventManager.AddHealthUI(value);
         }
         
         public void TakeDamage(int damage)
         {
-            _health -= damage;
+            CurrentHealth -= damage;
             _eventManager.TakeDamageUI(damage);
-            if (_health <= 0)
+            
+            if (CurrentHealth <= 0)
             {
                 Death();
             }
         }
         private void Death()
         {
-            _health = 0;
+            CurrentHealth = 0;
             IsDead = true;
             
             _colliderSize.size = new Vector2(0.2F,0.2F);
@@ -61,6 +61,5 @@ namespace Scripts.Managers
             
             _eventManager.DeathUI();
         }
-        
     }
 }

@@ -4,7 +4,7 @@ using Zenject;
 
 public class ConfigsInstaller : MonoInstaller
 {
-    [Header("OtherConfig")]
+    [Header("Configs")]
     [SerializeField] private PlayerConfig _playerConfig;
     
     public override void InstallBindings()

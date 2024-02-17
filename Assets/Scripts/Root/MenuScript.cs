@@ -1,15 +1,16 @@
+using Scripts.Enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace First2DGame
+namespace Scripts.Root
 {
     public class MenuScript : MonoBehaviour
     {
-        private FirstMapLoadder _firstMapLoadder;
+        private MapLoadder _mapLoadder;
 
         private void Awake()
         {
-            _firstMapLoadder = new FirstMapLoadder();
+            _mapLoadder = new MapLoadder();
         }
 
         private void UnloadMenu()
@@ -19,7 +20,7 @@ namespace First2DGame
             
         public void LoadFirstMap()
         {
-            _firstMapLoadder.LoadMap();
+            _mapLoadder.LoadMap(EMapType.Forest);
             UnloadMenu();
         }
     }

@@ -17,8 +17,7 @@ namespace Scripts.TriggerScripts
                 _audioSource.DOFade(1F, 3);
                 _ForestAudioSource.DOFade(0F, 3);
                 _audioSource.Play();
-                //PLEASE REFACTOR THIS !! I AM SCARED!
-                
+
                 if (_playerCamera.orthographicSize == 8)
                 {
                     StartCoroutine(CameraZoom());

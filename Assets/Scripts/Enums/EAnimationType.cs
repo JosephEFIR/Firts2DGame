@@ -7,6 +7,7 @@ namespace  Scripts.Enums
         Move,
         Run,
         Jump,
+        Landing,
         Attack,
         GetDamage,
         Die,

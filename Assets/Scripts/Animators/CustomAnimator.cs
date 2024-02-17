@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Scripts.Animators
 {
+    [RequireComponent(typeof(Animator))]
     public class CustomAnimator : MonoBehaviour
     {
         private Animator _animator;
@@ -19,8 +20,14 @@ namespace Scripts.Animators
                 case EAnimationType.Idle:
                     _animator.SetTrigger("isIdle");
                     break;
+                case EAnimationType.Run:
+                    _animator.SetTrigger("isRun");
+                    break;
                 case EAnimationType.Jump:
                     _animator.SetTrigger("isJump");
+                    break;
+                case EAnimationType.Landing:
+                    _animator.SetTrigger("isLanding");
                     break;
                 case EAnimationType.Attack:
                     _animator.SetTrigger("isAttack");
@@ -36,7 +43,7 @@ namespace Scripts.Animators
 
         public void SetMoveSpeed(float value)
         {
-            _animator.SetFloat("isMove", value);
+            _animator.SetFloat("Speed", value);
         }
     }
 }

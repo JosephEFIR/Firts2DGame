@@ -9,11 +9,11 @@ namespace Scripts.Configs
         
         [Header("Характеристики персонажа")] 
         
-        [SerializeField] private int _health;
-        [SerializeField] private int _maxHealth;
-        [SerializeField] private int _damage;
-        [SerializeField] private int _walkSpeed;
-        [SerializeField] private int _jumpForce;
+        [SerializeField] private int _health = 3;
+        [SerializeField] private int _maxHealth = 10;
+        [SerializeField] private int _damage = 1;
+        [SerializeField] private int _walkSpeed = 10;
+        [SerializeField] private int _jumpForce = 10;
 
         public int Health => _health;
         public int MaxHealth => _maxHealth;

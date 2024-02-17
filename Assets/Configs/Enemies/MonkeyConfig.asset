@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healh: 3
   _damage: 1
-  _jumpForce: 5
+  _jumpForce: 8
   _speed: 4
   _cooldown: 1
-  _attackDistance: 2
+  _attackDistance: 3
   _visibleDistance: 15
   _maxDistancePursuit: 20

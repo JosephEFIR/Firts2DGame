@@ -6,7 +6,7 @@ public class LevelInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.BindInterfacesAndSelfTo<PlayerController>().FromComponentInHierarchy().AsSingle();
-        Container.BindInterfacesAndSelfTo<HealthSystem>().FromComponentInHierarchy().AsSingle();
+        Container.BindInterfacesAndSelfTo<PlayerController>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<HealthSystem>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 }
