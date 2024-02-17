@@ -1,4 +1,6 @@
 using DG.Tweening;
+using Scripts.Audio;
+using Scripts.Enums;
 using UnityEngine;
 
 namespace Scripts.Common
@@ -12,10 +14,13 @@ namespace Scripts.Common
         {
             if (transform.position == _dayPoint.position)
             {
+                GlobalAudioSystem.Instance.Play(EClipType.Forest);
                 NightCycle();
             }
             else if(transform.position == _nightPoint.position)
             {
+                GlobalAudioSystem.Instance.Play(EClipType.Music);
+                GlobalAudioSystem.Instance.Stop(EClipType.Forest);
                 DayCycle();
             }
         }
@@ -31,13 +36,12 @@ namespace Scripts.Common
 
         private void DayCycle()
         {
-            transform.DOMove(_dayPoint.position, 100);
+            transform.DOMove(_dayPoint.position, 500);
         }
 
         private void NightCycle()
         {
-            
-            transform.DOMove(_nightPoint.position, 100);
+            transform.DOMove(_nightPoint.position, 500);
         }
         
     }

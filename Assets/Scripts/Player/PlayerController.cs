@@ -1,4 +1,3 @@
-using System;
 using Scripts.Animators;
 using Scripts.Configs;
 using Scripts.Enums;
@@ -76,6 +75,7 @@ namespace Scripts.Player
                 _animator.Play(EAnimationType.Idle); //<- What is it?
             }
             _animator.SetMoveSpeed(_rigidbody2D.velocity.magnitude);
+       
             
             _rigidbody2D.velocity = new Vector2(_horizontalAxis * _playerConfig.WalkSpeed, _rigidbody2D.velocity.y);
             

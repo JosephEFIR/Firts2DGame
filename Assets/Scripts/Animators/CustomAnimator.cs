@@ -20,6 +20,9 @@ namespace Scripts.Animators
                 case EAnimationType.Idle:
                     _animator.SetTrigger("isIdle");
                     break;
+                case EAnimationType.Move:
+                    _animator.SetTrigger("isMove");
+                    break;
                 case EAnimationType.Run:
                     _animator.SetTrigger("isRun");
                     break;
