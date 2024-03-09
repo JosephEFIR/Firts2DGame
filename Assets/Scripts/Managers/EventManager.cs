@@ -4,9 +4,9 @@ namespace Scripts.Managers
 {
     public class EventManager
     {
-        public static Action<int> _onTakeDamageUI;
-        public static Action<int> _onAddHealthUI;
-        public static Action _onDeathUI;
+        public static event Action<int> _onTakeDamageUI;
+        public static event Action<int> _onAddHealthUI;
+        public static event Action _onDeathUI;
 
         public void TakeDamageUI(int value)
         {

@@ -1,26 +1,30 @@
 using System;
+using Assets.Scripts.Interfaces;
+using Scripts.Animators;
 using Scripts.Configs;
+using Scripts.Enums;
+using Scripts.Managers;
 using UnityEngine;
 using Scripts.Player;
 using Zenject;
 
-namespace Scripts.Managers
+namespace Scripts.Health
 {
-    public class HealthSystem : MonoBehaviour
+    public class PlayerHealthSystem : MonoBehaviour,IHealthSystem
     { 
         [Inject] private EventManager _eventManager;
         [Inject] private PlayerConfig _playerConfig;
 
-        private Animator _animator;
+        private CustomAnimator _animator;
         private PlayerController _playerController;
         private CapsuleCollider2D _colliderSize;
 
-        public int CurrentHealth {get; private set; }
+        private int _currentHealth;
         public bool IsDead {get; private set; }
         
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
+            _animator = GetComponent<CustomAnimator>();
             _colliderSize = GetComponent<CapsuleCollider2D>();
             _playerController = GetComponent<PlayerController>();
         }
@@ -33,31 +37,32 @@ namespace Scripts.Managers
 
         public void AddHealth(int value)
         {
-            CurrentHealth += value;
-            CurrentHealth = Math.Clamp(CurrentHealth, 1 , _playerConfig.MaxHealth);
+            _currentHealth += value;
+            _currentHealth = Math.Clamp(_currentHealth, 1 , _playerConfig.MaxHealth);
 
             _eventManager.AddHealthUI(value);
         }
         
-        public void TakeDamage(int damage)
+        public void GetDamage(int damage)
         {
-            CurrentHealth -= damage;
+            _currentHealth -= damage;
             _eventManager.TakeDamageUI(damage);
+            _animator.Play(EAnimationType.GetDamage);
             
-            if (CurrentHealth <= 0)
+            if (_currentHealth <= 0)
             {
                 Death();
             }
         }
-        private void Death()
+        public void Death()
         {
-            CurrentHealth = 0;
+            _currentHealth = 0;
             IsDead = true;
             
             _colliderSize.size = new Vector2(0.2F,0.2F);
             
             _playerController.Stay(true);
-            _animator.SetBool("isDead", true);
+            _animator.Play(EAnimationType.Die);
             
             _eventManager.DeathUI();
         }

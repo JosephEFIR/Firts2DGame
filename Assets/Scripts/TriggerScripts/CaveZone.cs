@@ -1,14 +1,18 @@
 using DG.Tweening;
 using Scripts.Audio;
 using Scripts.Enums;
+using Scripts.Services;
 using UnityEngine;
+using Zenject;
 
 namespace Scripts.TriggerScripts
 {
     public sealed class CaveZone : MonoBehaviour
     {
+        [Inject] private DayNightService _dayNightService;
+        
         private Camera _playerCamera;
-        private static float DefaultOrtographSize;
+        private float DefaultOrtographSize;
         
         [SerializeField]
         [Range(3, 6)] private int _zoomSize;
@@ -27,8 +31,8 @@ namespace Scripts.TriggerScripts
         {
             if (collider2D.gameObject.tag == "Player")
             {
-                GlobalAudioSystem.Instance.Stop(EClipType.Forest);
-                GlobalAudioSystem.Instance.Play(EClipType.Cave);
+                GlobalAudioService.Instance.Stop(EClipType.Forest);
+                GlobalAudioService.Instance.Play(EClipType.Cave);
 
                 _playerCamera.DOOrthoSize(_zoomSize, 1);
             }
@@ -37,8 +41,8 @@ namespace Scripts.TriggerScripts
         {
             if (collider2D.gameObject.tag == "Player" )
             {
-                GlobalAudioSystem.Instance.Stop(EClipType.Cave);
-                GlobalAudioSystem.Instance.Play(EClipType.Forest);
+                GlobalAudioService.Instance.Stop(EClipType.Cave);
+                GlobalAudioService.Instance.Play(EClipType.Forest);
                 
                 _playerCamera.DOOrthoSize(DefaultOrtographSize, 1);
             }

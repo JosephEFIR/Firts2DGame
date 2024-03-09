@@ -1,15 +1,18 @@
 using Scripts.Animators;
 using Scripts.Configs;
 using Scripts.Enums;
+using Scripts.Health;
 using UnityEngine;
 using Scripts.Player;
-using Scripts.Managers;
 using Scripts.TriggerScripts;
 using Zenject;
 
 namespace Scripts.Enemies
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(CustomAnimator))]
+    [RequireComponent(
+        typeof(Rigidbody2D),
+        typeof(CustomAnimator), 
+        typeof(EnemyHealthSystem))]
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private GroundCheck _groundCheck;
@@ -17,76 +20,56 @@ namespace Scripts.Enemies
         [Space]
         [SerializeField] private JumpTrigger _jumpTrigger;
 
-        [Inject] private HealthSystem _playerHealthSystem;
         [Inject] private PlayerController _player;
         
-        private SpriteRenderer _spriteRenderer;
         private Rigidbody2D _rigidbody2D;
         private CustomAnimator _customAnimator;
-
-        private int _heatlh;
-        private int _damage;
+        
         private float _speed;
-        
         private float _distanceToTarget;
-        private float _attackDistance;
         private float _visibleDistance;
-        private float _maxDistancePursuit;
-        private float _cooldown;
-        private bool _isAttack = true;
-        
-        //Maybe create statContainer for stats?
         
         private bool _isFacingRight = true;
+        private bool _stopWalk = false;
 
         private void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _customAnimator = GetComponent<CustomAnimator>();
         }
 
         private void Start()
         {
-            _heatlh = _enemyConfig.Healh;
-            _damage = _enemyConfig.Damage;
             _speed = _enemyConfig.Speed;
-            
-            _distanceToTarget = _enemyConfig.AttackDistance;
-            _attackDistance = _enemyConfig.AttackDistance;
             _visibleDistance = _enemyConfig.VisibleDistance;
-            _maxDistancePursuit = _enemyConfig.MaxDistancePursuit;
-            _cooldown = _enemyConfig.Cooldown;
-            
+
             _customAnimator.Play(EAnimationType.Idle);
         }
 
         private void FixedUpdate()
         {
-            if (_groundCheck.IsGround)
+            if (_stopWalk == false)
             {
-                _customAnimator.SetMoveSpeed(_rigidbody2D.velocity.magnitude);
-                
-                _distanceToTarget = Vector3.Distance(_player.transform.position, gameObject.transform.position);
-                if (_distanceToTarget <= _attackDistance)
+                if (_groundCheck.IsGround)
                 {
-                    Attack();
+                    _distanceToTarget = Vector3.Distance(_player.transform.position, gameObject.transform.position);
+                    if (_distanceToTarget <= _visibleDistance)
+                    {
+                        Move();
+                    }
                 }
-                else if (_distanceToTarget <= _visibleDistance)
+                if (_groundCheck.IsGround & _jumpTrigger.CanJump)
                 {
-                    Walk();
-                    _cooldown = _enemyConfig.Cooldown;
+                    Jump();
                 }
+                FlipX();
             }
-            if (_groundCheck.IsGround & _jumpTrigger.CanJump)
-            {
-                Jump();
-            }
-            FlipX();
         }
 
-        private void Walk()
+        private void Move()
         {
+            _customAnimator.SetMoveSpeed(_rigidbody2D.velocity.magnitude);
+            
             if (_player.transform.position.x < gameObject.transform.position.x)
             {
                 _rigidbody2D.velocity = new Vector2(- _speed, 0);
@@ -103,34 +86,10 @@ namespace Scripts.Enemies
         {
             _rigidbody2D.AddForce(Vector2.up * _enemyConfig.JumpForce  ,ForceMode2D.Impulse);
         }
-        
-        private void Attack()
-        {
-            if (_isAttack)
-            {
-                _customAnimator.Play(EAnimationType.Attack);
-                
-                _cooldown -= Time.deltaTime;
-                if (_cooldown <= 0)
-                {
-                    _isAttack = false;
-                }
-            }
-            else if (_isAttack == false)
-            {
-                _cooldown = _enemyConfig.Cooldown;
-                _isAttack = true;
-            }
-        }
 
-        private void OnAttack()
+        public void Stay(bool value)
         {
-            _playerHealthSystem.TakeDamage(_damage);
-        }
-
-        public void GetDamage(int value)
-        {
-            _heatlh -= value;
+            _stopWalk = value;
         }
         
         private void FlipX()

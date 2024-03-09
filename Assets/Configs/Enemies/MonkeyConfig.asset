@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f3cb8dea2afa24abece387fa3f3488, type: 3}
   m_Name: MonkeyConfig
   m_EditorClassIdentifier: 
-  _healh: 3
+  health: 3
   _damage: 1
-  _jumpForce: 8
+  _jumpForce: 10
   _speed: 4
-  _cooldown: 1
-  _attackDistance: 3
   _visibleDistance: 15
-  _maxDistancePursuit: 20

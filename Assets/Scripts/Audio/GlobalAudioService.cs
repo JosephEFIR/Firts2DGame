@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace Scripts.Audio
 {
-    public class GlobalAudioSystem : MonoBehaviour
+    public class GlobalAudioService : MonoBehaviour
     {
         [SerializeField] private AudioSource _forestAudio;
         [SerializeField] private AudioSource _caveAudio;
         [SerializeField] private AudioSource _musicAudio;
 
-        public static GlobalAudioSystem Instance;
+        public static GlobalAudioService Instance;
 
         private void Awake()
         {
-            Instance = GetComponent<GlobalAudioSystem>();
+            Instance = GetComponent<GlobalAudioService>();
         }
 
         public void Play(EClipType type)

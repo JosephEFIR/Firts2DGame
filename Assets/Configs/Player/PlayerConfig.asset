@@ -16,4 +16,7 @@ MonoBehaviour:
   _maxHealth: 10
   _damage: 1
   _walkSpeed: 10
-  _jumpForce: 10
+  _jumpForce: 12
+  _jumpAudioClip: {fileID: 8300000, guid: 29a54016d863b0d49931efcbcae3d282, type: 3}
+  _fallingAudioClip: {fileID: 8300000, guid: b8fb5034545c78e4c9d1f6404b642a83, type: 3}
+  _runAudioClip: {fileID: 0}

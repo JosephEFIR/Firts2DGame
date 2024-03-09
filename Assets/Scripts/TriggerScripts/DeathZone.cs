@@ -1,33 +1,35 @@
 using System.Collections;
-using Scripts.Managers;
+using Assets.Scripts.Interfaces;
 using UnityEngine;
-using Zenject;
 
 namespace Scripts.TriggerScripts
 {
     public class DeathZone : MonoBehaviour
     {
-        [Inject] private HealthSystem _playerHealthSystem;
+        private IHealthSystem _healthSystem;
 
         private void OnTriggerEnter2D(Collider2D collider2D)
         {
-            if (collider2D.gameObject.tag == "Player")
+            if (collider2D.TryGetComponent(out IHealthSystem _healthSystem))
             {
-                StartCoroutine(TakeDamageWithTimer());
+                StartCoroutine(GetDamageRoutine()); //TODO wtf?
             }
         }
         private void OnTriggerExit2D(Collider2D collider2D)
         {
-            if (collider2D.gameObject.tag == "Player")
+            if (collider2D.TryGetComponent(out IHealthSystem _healthSystem))
             {
-                StopCoroutine(TakeDamageWithTimer());
+                StopCoroutine(GetDamageRoutine());
             }
         }
 
-        private IEnumerator TakeDamageWithTimer()
+        private IEnumerator GetDamageRoutine()
         {
-            _playerHealthSystem.TakeDamage(1);
-            yield return new WaitForSeconds(1F);
+            while (true)
+            {
+                _healthSystem.GetDamage(1);
+                yield return new WaitForSeconds(1F);
+            }
         }
     }
 }

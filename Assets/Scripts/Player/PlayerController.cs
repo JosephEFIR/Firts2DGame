@@ -6,6 +6,7 @@ using Zenject;
 
 namespace Scripts.Player
 {
+    [RequireComponent(typeof(AudioSource))]
     public class PlayerController : MonoBehaviour
     {
         [Inject] private PlayerConfig _playerConfig;
@@ -13,6 +14,7 @@ namespace Scripts.Player
         
         private Rigidbody2D _rigidbody2D;
         private CustomAnimator _animator;
+        private AudioSource _audioSource;
         private CapsuleCollider2D _colliderSize;
 
         private float _horizontalAxis;
@@ -27,6 +29,7 @@ namespace Scripts.Player
         {
             _animator = GetComponent<CustomAnimator>();
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            _audioSource = GetComponent<AudioSource>();
             _colliderSize = GetComponent<CapsuleCollider2D>();
             
             _defaultColliderSize = _colliderSize.size;
@@ -68,29 +71,27 @@ namespace Scripts.Player
                 FlipX();
             }
         }
+        
         private void Move()
         {
-            if (_rigidbody2D.velocity.magnitude == 0)
-            {
-                _animator.Play(EAnimationType.Idle); //<- What is it?
-            }
             _animator.SetMoveSpeed(_rigidbody2D.velocity.magnitude);
-       
             
             _rigidbody2D.velocity = new Vector2(_horizontalAxis * _playerConfig.WalkSpeed, _rigidbody2D.velocity.y);
-            
             _colliderSize.size = new Vector2(_defaultColliderSize.x, _defaultColliderSize.y);
         }
         private void Run()
         {
             _animator.Play(EAnimationType.Run);
             
-            _rigidbody2D.velocity = new Vector2(_horizontalAxis * _playerConfig.WalkSpeed * 2, _rigidbody2D.velocity.y);
+            _rigidbody2D.velocity = new Vector2(_horizontalAxis * _playerConfig.WalkSpeed * 1.5F, _rigidbody2D.velocity.y);
             _colliderSize.size = new Vector2(0.5F, 0.4F);
         }
         
         private void Jump()
         {
+            _audioSource.clip = _playerConfig.JumpAudioClip;
+            _audioSource.Play();
+            
             _animator.Play(EAnimationType.Jump);
             _rigidbody2D.AddForce(Vector2.up * _playerConfig.JumpForce, ForceMode2D.Impulse);
         }
@@ -99,18 +100,19 @@ namespace Scripts.Player
         {
             if (_rigidbody2D.velocity.y < -.1f)
             {
+                _audioSource.clip = _playerConfig.FalAudioClip;
+                _audioSource.Play();
+                
                 _animator.Play(EAnimationType.Landing);
-                Move();
             }
         }
         
         public void Stay(bool value)
         {
             _stopWalk = value;
-            _animator.Play(EAnimationType.Idle);
         }
         
-        private void FlipX()
+        private void FlipX() // <- MAYBE UTILS?
         {
             if (_isFacingRight && _horizontalAxis < 0f || !_isFacingRight && _horizontalAxis > 0f)
             {
