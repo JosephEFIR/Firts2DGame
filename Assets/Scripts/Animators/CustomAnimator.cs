@@ -29,9 +29,9 @@ namespace Scripts.Animators
                 case EAnimationType.Jump:
                     _animator.SetTrigger("isJump");
                     break;
-                case EAnimationType.Landing:
-                    _animator.SetTrigger("isLanding");
-                    break;
+                // case EAnimationType.Landing:
+                //     _animator.SetTrigger("isLanding");
+                //     break;
                 case EAnimationType.Attack:
                     _animator.SetTrigger("isAttack");
                     break;
@@ -47,6 +47,16 @@ namespace Scripts.Animators
         public void SetMoveSpeed(float value)
         {
             _animator.SetFloat("Speed", value);
+        }
+
+        public void SetRun(bool value)
+        {
+            _animator.SetBool("isRun", value);   
+        }
+
+        public void SetLanding(bool value)
+        {
+            _animator.SetBool("isLanding" , value);
         }
     }
 }

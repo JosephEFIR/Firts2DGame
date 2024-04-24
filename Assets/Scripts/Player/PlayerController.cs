@@ -18,7 +18,6 @@ namespace Scripts.Player
         private CapsuleCollider2D _colliderSize;
 
         private float _horizontalAxis;
-        private float _verticalAxis;
         private bool _isFacingRight = true;
 
         private bool _stopWalk = false;
@@ -40,9 +39,10 @@ namespace Scripts.Player
             if (_stopWalk == false)
             {
                 _horizontalAxis = Input.GetAxis("Horizontal");
-                
+
                 if (_groundCheck.IsGround)
                 {
+                    _animator.SetLanding(false);
                     if (Input.GetKey(KeyCode.Space))
                     {
                         Run();
@@ -58,6 +58,7 @@ namespace Scripts.Player
                 }
                 else if (_groundCheck.IsGround == false)
                 {
+                    _animator.SetLanding(true);
                     if (Input.GetKey(KeyCode.Space))
                     {
                         Run();
@@ -75,13 +76,15 @@ namespace Scripts.Player
         private void Move()
         {
             _animator.SetMoveSpeed(_rigidbody2D.velocity.magnitude);
+            _animator.SetRun(false);
             
             _rigidbody2D.velocity = new Vector2(_horizontalAxis * _playerConfig.WalkSpeed, _rigidbody2D.velocity.y);
             _colliderSize.size = new Vector2(_defaultColliderSize.x, _defaultColliderSize.y);
         }
         private void Run()
         {
-            _animator.Play(EAnimationType.Run);
+            //_animator.Play(EAnimationType.Run);
+            _animator.SetRun(true);
             
             _rigidbody2D.velocity = new Vector2(_horizontalAxis * _playerConfig.WalkSpeed * 1.5F, _rigidbody2D.velocity.y);
             _colliderSize.size = new Vector2(0.5F, 0.4F);
@@ -112,7 +115,7 @@ namespace Scripts.Player
             _stopWalk = value;
         }
         
-        private void FlipX() // <- MAYBE UTILS?
+        private void FlipX() //TODO <- MAYBE UTILS?
         {
             if (_isFacingRight && _horizontalAxis < 0f || !_isFacingRight && _horizontalAxis > 0f)
             {

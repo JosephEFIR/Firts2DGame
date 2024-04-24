@@ -1,7 +1,8 @@
-﻿using Scripts.Animators;
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
+using Scripts.Animators;
 using Scripts.Configs;
 using Scripts.Enums;
-using Scripts.Player;
 using UnityEngine;
 using Zenject;
 
@@ -20,6 +21,9 @@ namespace  Scripts.Weapons.Melee
         
         private AudioSource _audioSource;
         private CustomAnimator _animator;
+
+        private CancellationTokenSource _token;
+        private const int _tick = 350;
         
         private int _damage;
         
@@ -38,17 +42,35 @@ namespace  Scripts.Weapons.Melee
         {
             if (Input.GetKeyDown((KeyCode.J)))
             {
-                Attack();
+                if (_token == null)
+                {
+                    _token = new CancellationTokenSource();
+                    Attack().Forget();
+                }
             }
         }
-        private void Attack()
+        private async UniTaskVoid Attack()
         {
             _audioSource.clip = _swingAudio;
             _audioSource.Play();
             
             _animator.Play(EAnimationType.Attack); 
+            await UniTask.Delay(_tick, cancellationToken: _token.Token);
+            StopTick();
         }
-        
+
+        private void StopTick()
+        {
+            _token?.Cancel();
+            _token?.Dispose();
+            _token = null;
+        }
+
+        private void OnDestroy()
+        {
+            StopTick();
+        }
+
         private void OnAttack()
         {
             if (_meleePoint.CanAttack & _meleePoint.EnemyHealth != null)
