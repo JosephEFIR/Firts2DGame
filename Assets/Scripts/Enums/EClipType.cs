@@ -6,6 +6,22 @@
         Forest,
         Cave,
         Music,
-        BossFightMusic
+        BossFightMusic,
+        
+        Walk,
+        Jump,
+        Run, //Ball
+        Landed,
+        
+        Swing,
+        Punch,
+        GetDamage,
+        Death,
+        FireSwing, // ??
+        FirePunch,
+        
+        GetColor,
+        OpenChest,
+        //other
     }
 }

@@ -1,23 +1,33 @@
 ﻿using Assets.Scripts.Interfaces;
+using Audio;
+using ProjectTools;
 using Scripts.Animators;
 using Scripts.Configs;
+using Scripts.Enemies;
 using Scripts.Enums;
 using UnityEngine;
+using Zenject;
 
 namespace Scripts.Health
 {
     public class EnemyHealthSystem : MonoBehaviour, IHealthSystem
     {
-        [SerializeField] private EnemyConfig _enemyConfig;
+        [Inject] private SerializableDictionary<EEnemyType, EnemyConfig> _enemyConfigs;
+
+        private LocalAudioService _audioService;
+        private EnemyController _controller;
+        private EnemyConfig _enemyConfig;
         private CustomAnimator _animator;
         private CapsuleCollider2D _colliderSize;
         private int _currentHealth;
-        //TODO Умоляю сделай пожалуйста statContainer для обезьяны и других крипов. По кд в Сериализовать поле и выбирать, это такое себе... Или GetStat в конфиге сделай гений
 
         private void Awake()
         {
+            _audioService = GetComponent<LocalAudioService>();
             _animator = GetComponent<CustomAnimator>();
             _colliderSize = GetComponent<CapsuleCollider2D>();
+            _controller = GetComponent<EnemyController>();
+            _enemyConfig = _enemyConfigs[_controller.EnemyType];
         }
         
         private void Start()
@@ -35,8 +45,9 @@ namespace Scripts.Health
             _currentHealth -= value;
             if (_currentHealth <= 0)
             {
-                Death();
+                Death(); return;
             }
+            _audioService.Play(EClipType.GetDamage);
             _animator.Play(EAnimationType.GetDamage);
         }
 
@@ -44,6 +55,7 @@ namespace Scripts.Health
         {
             _currentHealth = 0;
             _animator.Play(EAnimationType.Die);
+            _audioService.Play(EClipType.Death);
             _colliderSize.size = new Vector2(0.3F,0.3F);
         }
 

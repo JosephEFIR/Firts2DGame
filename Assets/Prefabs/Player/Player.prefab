@@ -236,14 +236,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1664866372311567701}
+  - component: {fileID: 1870710026969627053}
   - component: {fileID: 6851629985220440902}
   - component: {fileID: 7894026219098839604}
   - component: {fileID: 8039581719693183288}
+  - component: {fileID: 2221987828699904628}
   - component: {fileID: 4273663131101266175}
   - component: {fileID: 8012224651222247305}
   - component: {fileID: 7456169014018521182}
   - component: {fileID: 6850207477613851052}
-  - component: {fileID: 2221987828699904628}
   - component: {fileID: 9063243673911096056}
   - component: {fileID: 4493012972705756182}
   m_Layer: 0
@@ -271,6 +272,19 @@ Transform:
   - {fileID: 2012034962497992869}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1870710026969627053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742633624541046013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13e26a73d6c1413ba8dc7f6afc526da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 7b347b5f468a4d74797cafec01eb3636, type: 2}
 --- !u!114 &6851629985220440902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +322,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 6581793660744030212}
+--- !u!114 &2221987828699904628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742633624541046013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13ed31bd0d984e918be292b13a1c6ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meleePoint: {fileID: 3356014112161704389}
+  _swingAudio: {fileID: 8300000, guid: bbbc566f8ff82c24c9aa45ba5d885756, type: 3}
+  _punchAudio: {fileID: 8300000, guid: 9836173449152ef428948dddd7332c98, type: 3}
 --- !u!212 &4273663131101266175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -443,21 +472,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2221987828699904628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2742633624541046013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13ed31bd0d984e918be292b13a1c6ec6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _meleePoint: {fileID: 3356014112161704389}
-  _swingAudio: {fileID: 8300000, guid: bbbc566f8ff82c24c9aa45ba5d885756, type: 3}
-  _punchAudio: {fileID: 8300000, guid: 9836173449152ef428948dddd7332c98, type: 3}
 --- !u!82 &9063243673911096056
 AudioSource:
   m_ObjectHideFlags: 0

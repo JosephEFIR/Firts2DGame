@@ -29,9 +29,6 @@ namespace Scripts.Animators
                 case EAnimationType.Jump:
                     _animator.SetTrigger("isJump");
                     break;
-                // case EAnimationType.Landing:
-                //     _animator.SetTrigger("isLanding");
-                //     break;
                 case EAnimationType.Attack:
                     _animator.SetTrigger("isAttack");
                     break;

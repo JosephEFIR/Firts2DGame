@@ -1,3 +1,6 @@
+using System;
+using Audio;
+using ProjectTools;
 using Scripts.Animators;
 using Scripts.Configs;
 using Scripts.Enums;
@@ -6,6 +9,7 @@ using UnityEngine;
 using Scripts.Player;
 using Scripts.TriggerScripts;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Scripts.Enemies
 {
@@ -15,15 +19,18 @@ namespace Scripts.Enemies
         typeof(EnemyHealthSystem))]
     public class EnemyController : MonoBehaviour
     {
+        [SerializeField] private EEnemyType _enemyType;
         [SerializeField] private GroundCheck _groundCheck;
-        [SerializeField] private EnemyConfig _enemyConfig;
-        [Space]
         [SerializeField] private JumpTrigger _jumpTrigger;
-
+        
         [Inject] private PlayerController _player;
+        [Inject] private SerializableDictionary<EEnemyType, EnemyConfig> _enemyConfigs;
+        
+        private EnemyConfig _enemyConfig;
         
         private Rigidbody2D _rigidbody2D;
         private CustomAnimator _customAnimator;
+        private LocalAudioService _audioService;
         
         private float _speed;
         private float _distanceToTarget;
@@ -32,10 +39,14 @@ namespace Scripts.Enemies
         private bool _isFacingRight = true;
         private bool _stopWalk = false;
 
+        public EEnemyType EnemyType => _enemyType;
+
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _customAnimator = GetComponent<CustomAnimator>();
+            _audioService = GetComponent<LocalAudioService>();
+            _enemyConfig = _enemyConfigs[EnemyType];
         }
 
         private void Start()
@@ -106,6 +117,11 @@ namespace Scripts.Enemies
                 localScale.x = 1f;
                 transform.localScale = localScale;
             }
+        }
+
+        private void OnWalking()
+        {
+            _audioService.PlayPitch(EClipType.Walk, Random.Range(1,2));
         }
     }
 }

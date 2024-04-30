@@ -1,5 +1,6 @@
 using System;
 using Assets.Scripts.Interfaces;
+using Audio;
 using Scripts.Animators;
 using Scripts.Configs;
 using Scripts.Enums;
@@ -18,6 +19,7 @@ namespace Scripts.Health
         private CustomAnimator _animator;
         private PlayerController _playerController;
         private CapsuleCollider2D _colliderSize;
+        private LocalAudioService _audioService;
 
         private int _currentHealth;
         public bool IsDead {get; private set; }
@@ -27,6 +29,7 @@ namespace Scripts.Health
             _animator = GetComponent<CustomAnimator>();
             _colliderSize = GetComponent<CapsuleCollider2D>();
             _playerController = GetComponent<PlayerController>();
+            _audioService = GetComponent<LocalAudioService>();
         }
 
         private void Start()
@@ -47,12 +50,13 @@ namespace Scripts.Health
         {
             _currentHealth -= damage;
             _eventManager.TakeDamageUI(damage);
-            _animator.Play(EAnimationType.GetDamage);
             
             if (_currentHealth <= 0)
             {
-                Death();
+                Death(); return;
             }
+            _animator.Play(EAnimationType.GetDamage);
+            _audioService.Play(EClipType.GetDamage);
         }
         public void Death()
         {
@@ -63,6 +67,7 @@ namespace Scripts.Health
             
             _playerController.Stay(true);
             _animator.Play(EAnimationType.Die);
+            _audioService.Play(EClipType.Death);
             
             _eventManager.DeathUI();
         }

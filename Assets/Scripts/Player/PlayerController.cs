@@ -1,8 +1,10 @@
+using Audio;
 using Scripts.Animators;
 using Scripts.Configs;
 using Scripts.Enums;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Scripts.Player
 {
@@ -14,7 +16,7 @@ namespace Scripts.Player
         
         private Rigidbody2D _rigidbody2D;
         private CustomAnimator _animator;
-        private AudioSource _audioSource;
+        private LocalAudioService _audioService;
         private CapsuleCollider2D _colliderSize;
 
         private float _horizontalAxis;
@@ -28,7 +30,7 @@ namespace Scripts.Player
         {
             _animator = GetComponent<CustomAnimator>();
             _rigidbody2D = GetComponent<Rigidbody2D>();
-            _audioSource = GetComponent<AudioSource>();
+            _audioService = GetComponent<LocalAudioService>();
             _colliderSize = GetComponent<CapsuleCollider2D>();
             
             _defaultColliderSize = _colliderSize.size;
@@ -83,7 +85,6 @@ namespace Scripts.Player
         }
         private void Run()
         {
-            //_animator.Play(EAnimationType.Run);
             _animator.SetRun(true);
             
             _rigidbody2D.velocity = new Vector2(_horizontalAxis * _playerConfig.WalkSpeed * 1.5F, _rigidbody2D.velocity.y);
@@ -92,9 +93,7 @@ namespace Scripts.Player
         
         private void Jump()
         {
-            _audioSource.clip = _playerConfig.JumpAudioClip;
-            _audioSource.Play();
-            
+            _audioService.Play(EClipType.Jump);
             _animator.Play(EAnimationType.Jump);
             _rigidbody2D.AddForce(Vector2.up * _playerConfig.JumpForce, ForceMode2D.Impulse);
         }
@@ -103,9 +102,6 @@ namespace Scripts.Player
         {
             if (_rigidbody2D.velocity.y < -.1f)
             {
-                _audioSource.clip = _playerConfig.FalAudioClip;
-                _audioSource.Play();
-                
                 _animator.Play(EAnimationType.Landing);
             }
         }
@@ -124,6 +120,11 @@ namespace Scripts.Player
                 localScale.x *= -1f;
                 transform.localScale = localScale;
             }
+        }
+
+        private void OnWalking()
+        {
+            _audioService.PlayPitch(EClipType.Walk,Random.Range(1,2));
         }
     }
 }

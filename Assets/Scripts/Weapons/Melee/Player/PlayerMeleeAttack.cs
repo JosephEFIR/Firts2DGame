@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using Audio;
 using Cysharp.Threading.Tasks;
 using Scripts.Animators;
 using Scripts.Configs;
@@ -14,13 +15,9 @@ namespace  Scripts.Weapons.Melee
         [Inject] private PlayerConfig _playerConfig;
     
         [SerializeField] private MeleePoint _meleePoint;
-
-        [Header("Sounds")] 
-        [SerializeField] private AudioClip _swingAudio;
-        [SerializeField] private AudioClip _punchAudio;
         
-        private AudioSource _audioSource;
         private CustomAnimator _animator;
+        private LocalAudioService _audioService;
 
         private CancellationTokenSource _token;
         private const int _tick = 350;
@@ -29,7 +26,7 @@ namespace  Scripts.Weapons.Melee
         
         private void Awake()
         {
-            _audioSource = GetComponent<AudioSource>();
+            _audioService = GetComponent<LocalAudioService>();
             _animator = GetComponent<CustomAnimator>();
         }
 
@@ -51,8 +48,7 @@ namespace  Scripts.Weapons.Melee
         }
         private async UniTaskVoid Attack()
         {
-            _audioSource.clip = _swingAudio;
-            _audioSource.Play();
+            _audioService.Play(EClipType.Swing);
             
             _animator.Play(EAnimationType.Attack); 
             await UniTask.Delay(_tick, cancellationToken: _token.Token);
@@ -76,9 +72,8 @@ namespace  Scripts.Weapons.Melee
             if (_meleePoint.CanAttack & _meleePoint.EnemyHealth != null)
             {
                 _meleePoint.EnemyHealth.GetDamage(_damage);
-                
-                _audioSource.clip = _punchAudio; //TODO maybe local audio Service?
-                _audioSource.Play();
+                _audioService.Play(EClipType.Punch);
+                _audioService.Play(EClipType.Punch);
             }
             _animator.Play(EAnimationType.Idle);
         }

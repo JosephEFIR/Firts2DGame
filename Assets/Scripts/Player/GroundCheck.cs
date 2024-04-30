@@ -1,3 +1,5 @@
+using Audio;
+using Scripts.Enums;
 using UnityEngine;
 
 namespace Scripts.Player
@@ -5,6 +7,22 @@ namespace Scripts.Player
     public class GroundCheck : MonoBehaviour
     {
         private bool _isGround;
+        private LocalAudioService _audioService;
+        private Rigidbody2D _rigidbody2D;
+
+        private void Awake()
+        {
+            _audioService = GetComponentInParent<LocalAudioService>();
+            _rigidbody2D = GetComponentInParent<Rigidbody2D>();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (collider.gameObject.tag == "Ground" & _rigidbody2D.velocity.y <= 0) //BRUH...
+            {
+                _audioService.Play(EClipType.Landed); 
+            }
+        }
 
         private void OnTriggerStay2D(Collider2D collision)
         {
