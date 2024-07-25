@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Scripts.Animators;
 using Scripts.Configs;
 using Scripts.Enums;
+using Scripts.Player;
 using UnityEngine;
 using Zenject;
 
@@ -12,12 +13,12 @@ namespace  Scripts.Weapons.Melee
     [RequireComponent(typeof(AudioSource))]
     public class MeleeAttackController : MonoBehaviour
     {
-        [Inject] private PlayerConfig _playerConfig;
-    
         [SerializeField] private MeleePoint _meleePoint;
         
         private CustomAnimator _animator;
         private LocalAudioService _audioService;
+        private PlayerController _playerController;
+        private PlayerConfig _playerConfig;
 
         private CancellationTokenSource _token;
         private const int _tick = 350;
@@ -28,6 +29,8 @@ namespace  Scripts.Weapons.Melee
         {
             _audioService = GetComponent<LocalAudioService>();
             _animator = GetComponent<CustomAnimator>();
+            _playerController = GetComponent<PlayerController>();
+            _playerConfig = _playerController.Config;
         }
 
         private void Start()

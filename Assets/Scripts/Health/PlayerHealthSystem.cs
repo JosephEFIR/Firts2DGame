@@ -14,12 +14,12 @@ namespace Scripts.Health
     public class PlayerHealthSystem : MonoBehaviour,IHealthSystem
     { 
         [Inject] private EventManager _eventManager;
-        [Inject] private PlayerConfig _playerConfig;
-
+        
         private CustomAnimator _animator;
         private PlayerController _playerController;
         private CapsuleCollider2D _colliderSize;
         private LocalAudioService _audioService;
+        private PlayerConfig _playerConfig;
 
         private int _currentHealth;
         public bool IsDead {get; private set; }
@@ -30,6 +30,7 @@ namespace Scripts.Health
             _colliderSize = GetComponent<CapsuleCollider2D>();
             _playerController = GetComponent<PlayerController>();
             _audioService = GetComponent<LocalAudioService>();
+            _playerConfig = _playerController.Config;
         }
 
         private void Start()
@@ -55,8 +56,8 @@ namespace Scripts.Health
             {
                 Death(); return;
             }
-            _animator.Play(EAnimationType.GetDamage);
             _audioService.Play(EClipType.GetDamage);
+            _animator.Play(EAnimationType.GetDamage);
         }
         public void Death()
         {

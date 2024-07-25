@@ -1,5 +1,4 @@
 using Audio;
-using Scripts.Enums;
 using UnityEngine;
 
 namespace Scripts.Player
@@ -18,9 +17,9 @@ namespace Scripts.Player
 
         private void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.gameObject.tag == "Ground" & _rigidbody2D.velocity.y <= 0) //BRUH...
+            if (collider.gameObject.tag == "Ground" & _rigidbody2D.velocity.y <= 0)
             {
-                _audioService.Play(EClipType.Landed); 
+                //_audioService.Play(EClipType.Landed);  //TODO SMERT'
             }
         }
 

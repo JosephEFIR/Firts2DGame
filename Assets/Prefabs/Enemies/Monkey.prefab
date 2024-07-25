@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyType: 1
+  _config: {fileID: 11400000, guid: 561478e79112ce34889c1d2f5057c55b, type: 2}
   _groundCheck: {fileID: 2365260201882474849}
   _jumpTrigger: {fileID: 5381101934084187830}
 --- !u!114 &4523197148924438847

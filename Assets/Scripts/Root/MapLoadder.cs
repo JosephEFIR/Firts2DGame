@@ -11,11 +11,11 @@ namespace Scripts.Root
             switch (_type)
             {
                 case EMapType.Forest:
-                    SceneManager.LoadScene(1);
+                    SceneManager.LoadScene(2);
                     break;
                 default:
                     Debug.LogWarning("Сцена/Карта не выбрана");
-                    SceneManager.LoadScene(0);
+                    SceneManager.LoadScene(1);
                     break;
             }
         }

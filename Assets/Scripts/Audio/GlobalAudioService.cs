@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using Scripts.Enums;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scripts.Audio
 {
@@ -10,11 +11,19 @@ namespace Scripts.Audio
         [SerializeField] private AudioSource _caveAudio;
         [SerializeField] private AudioSource _musicAudio;
 
+        [Header("На старте")]
+        [SerializeField] private EClipType _musicPlayOnStart;
+
         public static GlobalAudioService Instance;
 
         private void Awake()
         {
             Instance = GetComponent<GlobalAudioService>();
+        }
+
+        private void Start()
+        {
+            Play(_musicPlayOnStart);
         }
 
         public void Play(EClipType type)

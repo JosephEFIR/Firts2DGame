@@ -12,13 +12,14 @@ namespace Scripts.Health
 {
     public class EnemyHealthSystem : MonoBehaviour, IHealthSystem
     {
-        [Inject] private SerializableDictionary<EEnemyType, EnemyConfig> _enemyConfigs;
-
         private LocalAudioService _audioService;
+        
         private EnemyController _controller;
         private EnemyConfig _enemyConfig;
+        
         private CustomAnimator _animator;
         private CapsuleCollider2D _colliderSize;
+        
         private int _currentHealth;
 
         private void Awake()
@@ -27,7 +28,7 @@ namespace Scripts.Health
             _animator = GetComponent<CustomAnimator>();
             _colliderSize = GetComponent<CapsuleCollider2D>();
             _controller = GetComponent<EnemyController>();
-            _enemyConfig = _enemyConfigs[_controller.EnemyType];
+            _enemyConfig = _controller.Config;
         }
         
         private void Start()
@@ -42,12 +43,12 @@ namespace Scripts.Health
 
         public void GetDamage(int value)
         {
+            _audioService.Play(EClipType.GetDamage);
             _currentHealth -= value;
             if (_currentHealth <= 0)
             {
                 Death(); return;
             }
-            _audioService.Play(EClipType.GetDamage);
             _animator.Play(EAnimationType.GetDamage);
         }
 

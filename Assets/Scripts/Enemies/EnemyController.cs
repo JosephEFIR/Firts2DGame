@@ -1,4 +1,3 @@
-using System;
 using Audio;
 using ProjectTools;
 using Scripts.Animators;
@@ -20,13 +19,11 @@ namespace Scripts.Enemies
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private EEnemyType _enemyType;
+        [SerializeField] private EnemyConfig _config;
         [SerializeField] private GroundCheck _groundCheck;
         [SerializeField] private JumpTrigger _jumpTrigger;
         
         [Inject] private PlayerController _player;
-        [Inject] private SerializableDictionary<EEnemyType, EnemyConfig> _enemyConfigs;
-        
-        private EnemyConfig _enemyConfig;
         
         private Rigidbody2D _rigidbody2D;
         private CustomAnimator _customAnimator;
@@ -40,19 +37,19 @@ namespace Scripts.Enemies
         private bool _stopWalk = false;
 
         public EEnemyType EnemyType => _enemyType;
+        public EnemyConfig Config => _config;
 
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _customAnimator = GetComponent<CustomAnimator>();
             _audioService = GetComponent<LocalAudioService>();
-            _enemyConfig = _enemyConfigs[EnemyType];
         }
 
         private void Start()
         {
-            _speed = _enemyConfig.Speed;
-            _visibleDistance = _enemyConfig.VisibleDistance;
+            _speed = _config.Speed;
+            _visibleDistance = _config.VisibleDistance;
 
             _customAnimator.Play(EAnimationType.Idle);
         }
@@ -95,7 +92,7 @@ namespace Scripts.Enemies
 
         private void Jump()
         {
-            _rigidbody2D.AddForce(Vector2.up * _enemyConfig.JumpForce  ,ForceMode2D.Impulse);
+            _rigidbody2D.AddForce(Vector2.up * _config.JumpForce  ,ForceMode2D.Impulse);
         }
 
         public void Stay(bool value)

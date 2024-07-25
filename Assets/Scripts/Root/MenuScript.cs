@@ -15,7 +15,7 @@ namespace Scripts.Root
 
         private void UnloadMenu()
         {
-            SceneManager.UnloadScene(0);
+            SceneManager.UnloadScene(1);
         }
             
         public void LoadFirstMap()

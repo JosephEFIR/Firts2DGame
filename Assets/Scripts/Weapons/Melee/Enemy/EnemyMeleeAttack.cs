@@ -1,18 +1,14 @@
 ﻿using Audio;
-using ProjectTools;
 using Scripts.Animators;
 using Scripts.Configs;
 using Scripts.Enemies;
 using Scripts.Enums;
 using UnityEngine;
-using Zenject;
 
 namespace Scripts.Weapons.Melee
 {
     public class EnemyMeleeAttack : MonoBehaviour
     {
-        [Inject] private SerializableDictionary<EEnemyType, EnemyConfig> _enemyConfigs;
-        
         [SerializeField] private MeleePoint _meleePoint;
 
         private LocalAudioService _audioService;
@@ -27,7 +23,7 @@ namespace Scripts.Weapons.Melee
             _audioService = GetComponent<LocalAudioService>();
             _enemyController = GetComponent<EnemyController>();
             _animator = GetComponent<CustomAnimator>();
-            _config = _enemyConfigs[_enemyController.EnemyType];
+            _config = _enemyController.Config;
         }
 
         private void Start()

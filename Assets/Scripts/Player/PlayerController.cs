@@ -2,8 +2,8 @@ using Audio;
 using Scripts.Animators;
 using Scripts.Configs;
 using Scripts.Enums;
+using Scripts.TriggerScripts;
 using UnityEngine;
-using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Scripts.Player
@@ -11,8 +11,9 @@ namespace Scripts.Player
     [RequireComponent(typeof(AudioSource))]
     public class PlayerController : MonoBehaviour
     {
-        [Inject] private PlayerConfig _playerConfig;
+        [SerializeField] private PlayerConfig _playerConfig;
         [SerializeField] private GroundCheck _groundCheck;
+        [SerializeField] private BallModeTrigger _ballModeTrigger;
         
         private Rigidbody2D _rigidbody2D;
         private CustomAnimator _animator;
@@ -25,6 +26,8 @@ namespace Scripts.Player
         private bool _stopWalk = false;
 
         private Vector2 _defaultColliderSize;
+
+        public PlayerConfig Config => _playerConfig;
 
         private void Awake()
         {
@@ -41,34 +44,48 @@ namespace Scripts.Player
             if (_stopWalk == false)
             {
                 _horizontalAxis = Input.GetAxis("Horizontal");
-
                 if (_groundCheck.IsGround)
                 {
-                    _animator.SetLanding(false);
-                    if (Input.GetKey(KeyCode.Space))
+                    
+                    if (_ballModeTrigger.TriggerOn)//TODO FIX THIS ON 1.4
                     {
-                        Run();
-                    }
-                    else if (Input.GetKey(KeyCode.W))
-                    {
-                        Jump();
+                        BallMode();
                     }
                     else
                     {
-                        Move();
+                        _animator.SetLanding(false);
+                        if (Input.GetKey(KeyCode.Space))
+                        {
+                            BallMode();
+                        }
+                        else if (Input.GetKey(KeyCode.W))
+                        {
+                            Jump();
+                        }
+                        else
+                        {
+                            Move();
+                        }
                     }
                 }
                 else if (_groundCheck.IsGround == false)
                 {
-                    _animator.SetLanding(true);
-                    if (Input.GetKey(KeyCode.Space))
+                    if (_ballModeTrigger.TriggerOn)//TODO FIX THIS ON 1.4
                     {
-                        Run();
+                        BallMode();
                     }
                     else
                     {
-                        Move();
-                        Landing();
+                        _animator.SetLanding(true);
+                        if (Input.GetKey(KeyCode.Space))
+                        {
+                            BallMode();
+                        }
+                        else
+                        {
+                            Move();
+                            Landing();
+                        }
                     }
                 }
                 FlipX();
@@ -83,12 +100,12 @@ namespace Scripts.Player
             _rigidbody2D.velocity = new Vector2(_horizontalAxis * _playerConfig.WalkSpeed, _rigidbody2D.velocity.y);
             _colliderSize.size = new Vector2(_defaultColliderSize.x, _defaultColliderSize.y);
         }
-        private void Run()
+        private void BallMode()
         {
             _animator.SetRun(true);
             
             _rigidbody2D.velocity = new Vector2(_horizontalAxis * _playerConfig.WalkSpeed * 1.5F, _rigidbody2D.velocity.y);
-            _colliderSize.size = new Vector2(0.5F, 0.4F);
+            _colliderSize.size = new Vector2(0.45F, 0.35F);
         }
         
         private void Jump()
