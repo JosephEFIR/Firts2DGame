@@ -12,7 +12,7 @@ namespace Scripts.Managers
         {
             _onTakeDamageUI?.Invoke(value);
         }
-        
+        //TODO УДАЛИТЬ
         public void AddHealthUI(int value)
         {
             _onAddHealthUI?.Invoke(value);
