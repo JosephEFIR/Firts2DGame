@@ -19,15 +19,6 @@ namespace Scripts.Player
         {
             if (collider.gameObject.tag == "Ground" & _rigidbody2D.velocity.y <= 0)
             {
-                //_audioService.Play(EClipType.Landed);  //TODO SMERT'
-            }
-        }
-
-        private void OnTriggerStay2D(Collider2D collision)
-        {
-
-            if (collision.gameObject.tag == "Ground")
-            {
                 _isGround = true;
             }
         }

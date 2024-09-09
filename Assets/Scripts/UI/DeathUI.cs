@@ -8,7 +8,7 @@ namespace Scripts.UI
 {
     public sealed class DeathUI : BaseUI
     {
-        [Inject] private MapLoadder _mapLoadder;
+        [Inject] private SceneLoader _sceneLoader;
         [SerializeField] private GameObject _restartButton;
         
         public override void Initialize()
@@ -23,7 +23,7 @@ namespace Scripts.UI
 
         private void OnDeath()
         {
-            _mapLoadder.LoadMap(EMapType.Forest);
+            _sceneLoader.LoadScene(ESceneType.Forest);
         }
     }
 }

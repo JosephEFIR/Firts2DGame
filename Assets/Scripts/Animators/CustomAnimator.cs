@@ -13,7 +13,7 @@ namespace Scripts.Animators
             _animator = GetComponent<Animator>();
         }
 
-        public void Play(EAnimationType type)
+        public void Play(EAnimationType type) //TODO Rework this
         {
             switch (type)
             {

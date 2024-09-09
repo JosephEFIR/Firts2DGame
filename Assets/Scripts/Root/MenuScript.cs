@@ -6,21 +6,21 @@ namespace Scripts.Root
 {
     public class MenuScript : MonoBehaviour
     {
-        private MapLoadder _mapLoadder;
+        private SceneLoader _sceneLoader;
 
         private void Awake()
         {
-            _mapLoadder = new MapLoadder();
+            _sceneLoader = new SceneLoader();
         }
 
         private void UnloadMenu()
         {
-            SceneManager.UnloadScene(1);
+            SceneManager.UnloadScene(0);
         }
             
         public void LoadFirstMap()
         {
-            _mapLoadder.LoadMap(EMapType.Forest);
+            _sceneLoader.LoadScene(ESceneType.Forest);
             UnloadMenu();
         }
     }

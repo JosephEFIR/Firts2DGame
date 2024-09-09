@@ -5,6 +5,6 @@ public class GlobalInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.BindInterfacesAndSelfTo<MapLoadder>().AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle().NonLazy();
     }
 }

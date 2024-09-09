@@ -8,8 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Scripts.Player
 {
-    [RequireComponent(typeof(AudioSource))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour //TODO Rework this
     {
         [SerializeField] private PlayerConfig _playerConfig;
         [SerializeField] private GroundCheck _groundCheck;
@@ -39,7 +38,7 @@ namespace Scripts.Player
             _defaultColliderSize = _colliderSize.size;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (_stopWalk == false)
             {
@@ -58,7 +57,7 @@ namespace Scripts.Player
                         {
                             BallMode();
                         }
-                        else if (Input.GetKey(KeyCode.W))
+                        else if (Input.GetKeyDown(KeyCode.W))
                         {
                             Jump();
                         }

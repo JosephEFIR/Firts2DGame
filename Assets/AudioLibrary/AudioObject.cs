@@ -94,10 +94,11 @@ namespace AudioObjectLib
     private IEnumerator RemoveWaitRealtime ()
     {
         float time = _audioSource.clip.length + 0.01f;
+        Debug.Log(time);
 #if UNITY_EDITOR
         Debug.Log($"{name} audio object destroy as {time} seconds");
 #endif
-
+        
         yield return new WaitForSecondsRealtime(time);
         Remove();
     }

@@ -10,7 +10,6 @@ using Zenject;
 
 namespace  Scripts.Weapons.Melee
 {
-    [RequireComponent(typeof(AudioSource))]
     public class MeleeAttackController : MonoBehaviour
     {
         [SerializeField] private MeleePoint _meleePoint;
