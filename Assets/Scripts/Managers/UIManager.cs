@@ -1,23 +1,34 @@
-﻿using Scripts.UI;
+﻿using System;
+using System.Collections.Generic;
+using Scripts.UI;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using Screen = Scripts.UI.Screen;
+
 
 namespace Scripts.Managers
 {
-    public class UIManager : MonoBehaviour
+    public class UIManager : SerializedMonoBehaviour
     {
+        [LabelText("Стартовый экран")]
+        [SerializeField] private EScreenType _startScreen;
+        [LabelText("Экраны")]
+        [SerializeField] private Dictionary<EScreenType, Screen> _screens = new();
 
-        [SerializeField] private HealthUI _healthUi;
-        [SerializeField] private DeathUI _deathUi;
+        private EScreenType _currentScreen;
 
-        private void Awake()
-        {
-            _healthUi.Initialize();
-            _deathUi.Initialize();
-        }
+        public Dictionary<EScreenType, Screen> Screens => _screens;
 
         private void Start()
         {
-            _healthUi.Show();
+            _currentScreen = _startScreen;
+            ChangeScreen(_startScreen);
+        }
+
+        public void ChangeScreen(EScreenType type)
+        {
+            _screens[_currentScreen]?.gameObject.SetActive(false);
+            _screens[type].gameObject.SetActive(true);
         }
     }
 }

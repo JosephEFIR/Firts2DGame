@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 1870710026969627053}
   - component: {fileID: 6851629985220440902}
   - component: {fileID: 7894026219098839604}
+  - component: {fileID: 8614425713932494424}
   - component: {fileID: 8039581719693183288}
   - component: {fileID: 2221987828699904628}
   - component: {fileID: 4273663131101266175}
@@ -394,6 +395,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9daca9b74d554043b5473384bb024ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8614425713932494424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2742633624541046013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695e8d81e7af41e688cd201fb3835771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: f2b53ff8092c38a4ca237f894a698c19, type: 2}
 --- !u!114 &8039581719693183288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf66546c74c7d634e9393a42ee1cd1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerConfig: {fileID: 11400000, guid: f2b53ff8092c38a4ca237f894a698c19, type: 2}
+  _blockPlayer: 0
   _groundCheck: {fileID: 6581793660744030212}
   _ballModeTrigger: {fileID: 2336999730690628807}
 --- !u!114 &2221987828699904628

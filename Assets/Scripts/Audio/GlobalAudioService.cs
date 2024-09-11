@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using Scripts.Enums;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,7 +12,7 @@ namespace Scripts.Audio
         [SerializeField] private AudioSource _caveAudio;
         [SerializeField] private AudioSource _musicAudio;
 
-        [Header("На старте")]
+        [LabelText("На старте")] 
         [SerializeField] private EClipType _musicPlayOnStart;
 
         public static GlobalAudioService Instance;

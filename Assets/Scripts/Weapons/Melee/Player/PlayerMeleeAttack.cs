@@ -16,8 +16,7 @@ namespace  Scripts.Weapons.Melee
         
         private CustomAnimator _animator;
         private LocalAudioService _audioService;
-        private PlayerController _playerController;
-        private PlayerConfig _playerConfig;
+        private UnitConfig _config;
 
         private CancellationTokenSource _token;
         private const int _tick = 350;
@@ -28,20 +27,20 @@ namespace  Scripts.Weapons.Melee
         {
             _audioService = GetComponent<LocalAudioService>();
             _animator = GetComponent<CustomAnimator>();
-            _playerController = GetComponent<PlayerController>();
-            _playerConfig = _playerController.Config;
+            PlayerController _player = GetComponent<PlayerController>();
+            _config = _player.Config;
         }
 
         private void Start()
         {
-            _damage = _playerConfig.Damage;
+            _damage = _config.UnitStats[EUnitStat.Damage];
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown((KeyCode.J)))
+            if (Input.GetKeyDown((KeyCode.J))) //TODO refactor ball mode & attack mode , State machine?
             {
-                if (_token == null)
+                if (_token is null)
                 {
                     _token = new CancellationTokenSource();
                     Attack().Forget();
@@ -52,7 +51,7 @@ namespace  Scripts.Weapons.Melee
         {
             _audioService.Play(EClipType.Swing);
             
-            _animator.Play(EAnimationType.Attack); 
+            _animator.SetTrigger(EAnimationType.Attack); 
             await UniTask.Delay(_tick, cancellationToken: _token.Token);
             StopTick();
         }
@@ -77,7 +76,7 @@ namespace  Scripts.Weapons.Melee
                 _audioService.Play(EClipType.Punch);
                 _audioService.Play(EClipType.Punch);
             }
-            _animator.Play(EAnimationType.Idle);
+            _animator.SetTrigger(EAnimationType.Idle);
         }
     }
 }

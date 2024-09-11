@@ -3,6 +3,7 @@ using Scripts.Animators;
 using Scripts.Configs;
 using Scripts.Enemies;
 using Scripts.Enums;
+using Units.Enemies;
 using UnityEngine;
 
 namespace Scripts.Weapons.Melee
@@ -12,23 +13,24 @@ namespace Scripts.Weapons.Melee
         [SerializeField] private MeleePoint _meleePoint;
 
         private LocalAudioService _audioService;
-        private EnemyConfig _config;
-        private EnemyController _enemyController;
         private CustomAnimator _animator;
-        
+        private EnemyAI _enemyAI;
+        private UnitConfig _config;
+
         private int _damage;
         
         private void Awake()
         {
             _audioService = GetComponent<LocalAudioService>();
-            _enemyController = GetComponent<EnemyController>();
+            EnemyController enemyController = GetComponent<EnemyController>();
             _animator = GetComponent<CustomAnimator>();
-            _config = _enemyController.Config;
+            _enemyAI = GetComponent<EnemyAI>();
+            _config = enemyController.Config;
         }
 
         private void Start()
         {
-            _damage = _config.Damage;
+            _damage = _config.UnitStats[EUnitStat.Damage];
         }
 
         private void Update()
@@ -41,9 +43,9 @@ namespace Scripts.Weapons.Melee
 
         private void Attack()
         {
-            _enemyController.Stay(true);
+            _enemyAI.Stay(true);
             _audioService.Play(EClipType.Swing);
-            _animator.Play(EAnimationType.Attack); 
+            _animator.SetTrigger(EAnimationType.Attack); 
         }
         
         private void OnAttack()
@@ -53,8 +55,8 @@ namespace Scripts.Weapons.Melee
                 _audioService.Play(EClipType.Punch);
                 _meleePoint.EnemyHealth.GetDamage(_damage);
             }
-            _enemyController.Stay(false);
-            _animator.Play(EAnimationType.Idle);
+            _enemyAI.Stay(false);
+            _animator.SetTrigger(EAnimationType.Idle);
         }
     } 
 }

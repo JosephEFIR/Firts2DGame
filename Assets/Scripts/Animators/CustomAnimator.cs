@@ -13,32 +13,10 @@ namespace Scripts.Animators
             _animator = GetComponent<Animator>();
         }
 
-        public void Play(EAnimationType type) //TODO Rework this
+        public void SetTrigger(EAnimationType type)
         {
-            switch (type)
-            {
-                case EAnimationType.Idle:
-                    _animator.SetTrigger("isIdle");
-                    break;
-                case EAnimationType.Move:
-                    _animator.SetTrigger("isMove");
-                    break;
-                case EAnimationType.Run:
-                    _animator.SetTrigger("isRun");
-                    break;
-                case EAnimationType.Jump:
-                    _animator.SetTrigger("isJump");
-                    break;
-                case EAnimationType.Attack:
-                    _animator.SetTrigger("isAttack");
-                    break;
-                case EAnimationType.Die:
-                    _animator.SetTrigger("isDeath");
-                    break;
-                case EAnimationType.GetDamage:
-                    _animator.SetTrigger("isGetDamage");
-                    break;
-            }
+            if(type == EAnimationType.None){ Debug.LogError("Animation is not select ");}
+            _animator.SetTrigger(type.ToString());
         }
 
         public void SetMoveSpeed(float value)
@@ -46,14 +24,10 @@ namespace Scripts.Animators
             _animator.SetFloat("Speed", value);
         }
 
-        public void SetRun(bool value)
+        public void SetBool(EAnimationType type ,bool value)
         {
-            _animator.SetBool("isRun", value);   
-        }
-
-        public void SetLanding(bool value)
-        {
-            _animator.SetBool("isLanding" , value);
+            if(type == EAnimationType.None){ Debug.LogError("Animation is not select ");}
+            _animator.SetBool(type.ToString(), value);   
         }
     }
 }

@@ -6,11 +6,11 @@ namespace Scripts.UI.Buttons
 {
     public class BackSpawnButton : BaseUIButton
     {
-        [Inject] private PlayerController _player;
+        [Inject] private PlayerMoveController _playerMove;
         
         protected override void OnClick()
         {
-            _player.transform.position = new Vector3(0,0,1);
+            _playerMove.transform.position = new Vector3(0,0,1);
         }
     }
 }
